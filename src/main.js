@@ -265,7 +265,7 @@ function renderHome() {
         </div>
         <div class="case-grid">
           ${caseStudies.map(item => `
-            <a class="case-card" href="/cases/${item.slug}/" data-type="${item.type}">
+            <a class="case-card" href="/cases/${item.slug}" data-type="${item.type}">
               <span class="case-open">查看完整案例</span>
               <img src="/${item.cardImage}" alt="${item.title}演示图" loading="lazy" />
               <div>
@@ -372,7 +372,7 @@ function renderCasePage(study) {
         <div class="section-kicker">More Cases</div>
         <h2>继续看其他能力</h2>
         <div class="related-grid">
-          ${caseStudies.filter(item => item.slug !== study.slug).map(item => `<a href="/cases/${item.slug}/"><span>${item.eyebrow}</span><strong>${item.title}</strong></a>`).join('')}
+          ${caseStudies.filter(item => item.slug !== study.slug).map(item => `<a href="/cases/${item.slug}"><span>${item.eyebrow}</span><strong>${item.title}</strong></a>`).join('')}
         </div>
       </section>
 
