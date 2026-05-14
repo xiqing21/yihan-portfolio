@@ -10,6 +10,8 @@
   --gold: #d6a24a;
   --line: rgba(16, 32, 29, 0.14);
   --shadow: 0 28px 80px rgba(13, 47, 44, 0.14);
+  --card: rgba(255, 250, 242, 0.78);
+  --chip: rgba(255, 250, 242, 0.72);
   font-family: "Avenir Next", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
@@ -25,6 +27,8 @@
   --gold: #e2b65c;
   --line: rgba(244, 239, 230, 0.16);
   --shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+  --card: rgba(16, 32, 29, 0.86);
+  --chip: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -180,7 +184,7 @@ footer a:hover {
 .secondary,
 .contact-actions a {
   color: var(--ink);
-  background: rgba(255, 250, 242, 0.72);
+  background: var(--chip);
 }
 
 .header-cta:hover,
@@ -358,7 +362,7 @@ h3 {
   padding: 26px;
   border: 1px solid rgba(255, 250, 242, 0.72);
   border-radius: 8px;
-  background: rgba(255, 250, 242, 0.7);
+  background: var(--card);
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
 }
@@ -388,8 +392,8 @@ h3 {
   border-radius: 999px;
   padding: 8px 10px;
   text-align: center;
-  color: var(--jade-dark);
-  background: rgba(255, 250, 242, 0.62);
+  color: var(--ink);
+  background: var(--chip);
   font-size: 12px;
 }
 
@@ -505,7 +509,7 @@ h3 {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 250, 242, 0.78);
+  background: var(--card);
   box-shadow: 0 12px 34px rgba(13, 47, 44, 0.08);
 }
 
@@ -568,6 +572,10 @@ h3 {
   color: var(--porcelain);
 }
 
+:root[data-theme="dark"] .template-card.featured {
+  color: #07120f;
+}
+
 .template-card p {
   color: inherit;
   opacity: 0.72;
@@ -583,6 +591,10 @@ h3 {
   background: rgba(214, 162, 74, 0.22);
   font-size: 12px;
   font-weight: 800;
+}
+
+:root[data-theme="dark"] .badge {
+  color: #07120f;
 }
 
 .featured .badge {
@@ -779,13 +791,17 @@ h3 {
   border-radius: 999px;
   padding: 10px 16px;
   color: var(--muted);
-  background: rgba(255, 250, 242, 0.76);
+  background: var(--chip);
   cursor: pointer;
 }
 
 .case-filters button.active {
   color: var(--porcelain);
   background: var(--jade-dark);
+}
+
+:root[data-theme="dark"] .case-filters button.active {
+  color: #07120f;
 }
 
 .case-grid {
@@ -886,6 +902,21 @@ h3 {
   grid-column: 1 / -1;
   color: var(--muted);
   line-height: 1.6;
+}
+
+:root[data-theme="dark"] .price-table span,
+:root[data-theme="dark"] .advantage-list span,
+:root[data-theme="dark"] .service-index {
+  color: var(--gold);
+}
+
+:root[data-theme="dark"] .template-card p,
+:root[data-theme="dark"] .service-card ul,
+:root[data-theme="dark"] .case-card p,
+:root[data-theme="dark"] .price-table small,
+:root[data-theme="dark"] .advantage-list div,
+:root[data-theme="dark"] .section-head p {
+  color: var(--muted);
 }
 
 .guarantee-grid {

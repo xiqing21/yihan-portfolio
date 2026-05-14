@@ -249,7 +249,157 @@ const translations = {
   '风格采样': 'Style',
   '批量生成': 'Generate',
   '精修定稿': 'Refine',
-  '模板沉淀': 'Template'
+  '模板沉淀': 'Template',
+  'Next.js': 'Next.js',
+  'Vue': 'Vue',
+  '微信小程序': 'WeChat Mini Program',
+  'APP封装': 'App Packaging',
+  'Node.js': 'Node.js',
+  'PostgreSQL': 'PostgreSQL',
+  '云端存储': 'Cloud Storage',
+  '权限系统': 'Permission System',
+  '支付对接': 'Payment Integration',
+  '数据可视化': 'Data Visualization',
+  'AI生图': 'AI Image Generation',
+  '商业海报': 'Commercial Posters',
+  '品牌视觉': 'Brand Visuals',
+  '钱包连接': 'Wallet Connect',
+  '智能合约前端': 'Smart Contract UI',
+  '隐私加密': 'Privacy Encryption',
+  '数据脱敏': 'Data Masking',
+  '运维部署': 'Deployment & Ops',
+  '移动端适配': 'Mobile Responsive',
+  '极简艺术宣传官网': 'Minimal Artistic Website',
+  '低预算首选': 'Budget Friendly',
+  '适合个人名片、门店展示、商家引流和品牌形象。强调原创审美、地图定位、悬浮联系与移动端精修。': 'For personal cards, shops, local traffic, and brand showcases with original visual direction, map location, floating contact, and mobile refinement.',
+  '艺术化排版': 'Art Direction',
+  '地图定位': 'Map Location',
+  '联系方式悬浮': 'Floating Contact',
+  '全端适配': 'Responsive',
+  '功能型平台项目': 'Functional Platform',
+  '商业刚需': 'Business Core',
+  '适合服务平台、私域系统和会员项目。包含用户体系、图片视频存储、交互功能和后台管理。': 'For service platforms, private-domain systems, and membership products with accounts, media storage, interactions, and admin dashboards.',
+  '注册登录': 'Auth',
+  '权限分级': 'Roles',
+  '后台管理': 'Admin',
+  '高端 APP / Web3 DApp': 'Premium App / Web3 DApp',
+  '差异化高端': 'Premium Custom',
+  '面向隐私、安全、链上交互和双端应用。可做钱包连接、链上数据展示、加密存储与脱敏逻辑。': 'For privacy, security, on-chain interactions, and cross-platform apps with wallets, blockchain data, encrypted storage, and masking flows.',
+  '双端适配': 'iOS/Android',
+  '链上交互': 'On-chain',
+  '全栈开发': 'Full-stack Development',
+  'APP开发、双端打包、上架部署': 'App development, packaging, store/deployment support',
+  '微信小程序 / H5 / 企业官网定制': 'WeChat Mini Program / H5 / business websites',
+  '注册登录、个人中心、权限分级': 'Auth, profile center, role permissions',
+  '图片、视频、文档云端加密存储': 'Encrypted cloud storage for images, videos, and docs',
+  '支付对接与商用收款闭环': 'Payment integration and commercial checkout flow',
+  '数据可视化、后台统计、服务器运维': 'Data visualization, admin stats, and server ops',
+  'AI视觉创意': 'AI Visual Creative',
+  '商业海报、门店活动封面批量精修': 'Commercial posters and shop campaign covers',
+  '电商主图、详情页、产品图AI精修': 'E-commerce hero images, detail pages, product retouching',
+  '氛围感人像、模特图、原创艺术配图': 'Portrait mood shots, model visuals, original art images',
+  'LOGO创意与品牌视觉物料': 'Logo concepts and brand visual materials',
+  '固定风格长期代做与高级版式艺术排版': 'Long-term fixed-style output and premium layout design',
+  'Web3隐私DApp': 'Web3 Privacy DApp',
+  'DApp定制、钱包连接、链上交互': 'DApp customization, wallet connection, on-chain interaction',
+  '隐私加密应用、数据脱敏': 'Privacy apps and data masking',
+  '去中心化账号与存储系统': 'Decentralized accounts and storage',
+  'Web3官网、白皮书配套视觉': 'Web3 websites and whitepaper visuals',
+  '智能合约前端与链上数据可视化': 'Contract frontend and on-chain data visualization',
+  '本地商家合作': 'Local Business Support',
+  '门店宣传物料包月制作': 'Monthly shop marketing visuals',
+  '物业通知、社区活动图长期供应': 'Property notices and community event visuals',
+  '私域引流小程序、高颜值活动落地页': 'Private traffic mini programs and polished landing pages',
+  '对公/对私合作、协议与开票结算': 'Business/personal cooperation, contracts, invoices',
+  '6年国网政企级产品开发经验，代码规范、系统稳定': '6 years of enterprise-grade product development with stable, maintainable code',
+  '能做真实用户体系、权限管理、图片视频云端存储': 'Real user systems, permissions, and image/video cloud storage',
+  '传统互联网开发 + 3年Web3链上开发双赛道': 'Traditional web development plus 3 years of Web3/on-chain work',
+  '自带UI视觉设计能力，拒绝廉价粗糙模板': 'Built-in UI and visual design taste, no cheap template feel',
+  '一人全栈全包，沟通成本低，响应快': 'One-person full-stack delivery with fast communication',
+  'AI视觉高效产出，低成本做出高级宣传物料': 'Efficient AI visuals for premium marketing materials at lower cost',
+  '惠州常驻，深圳可面谈，真实可对接': 'Based in Huizhou, available for Shenzhen meetings',
+  '价格透明，无中间商溢价': 'Transparent pricing without middleman markup',
+  '把门店、个人品牌或民宿做成有审美、有转化路径、手机端也舒服的官网。': 'Turn shops, personal brands, or homestays into beautiful, conversion-focused, mobile-friendly websites.',
+  '适合会员系统、私域工具、作品上传、订单表单，重点是真实用户体系和文件留存。': 'For member systems, private tools, uploads, and order forms, focused on real accounts and file retention.',
+  '把业务数据、订单、访问、告警做成管理者能一眼看懂的稳定后台。': 'Turn business data, orders, traffic, and alerts into stable dashboards managers can understand quickly.',
+  '面向链上项目、隐私加密应用、钱包连接和链上数据可视化。': 'For on-chain projects, privacy apps, wallet connection, and blockchain data visualization.',
+  '面向门店、电商、活动宣传，批量做出风格统一的海报、主图和社媒卡片。': 'For shops, e-commerce, and campaigns, producing consistent posters, hero images, and social cards.',
+  '艺术极简宣传官网': 'Artistic Minimal Website',
+  '展示、地图、联系、艺术排版、移动端适配': 'Showcase, map, contact, art layout, mobile fit',
+  '功能型官网 / 小程序': 'Functional Website / Mini Program',
+  '用户体系、个人中心、图片视频存储、交互和后台': 'Accounts, profile center, media storage, interactions, admin',
+  'AI视觉设计服务': 'AI Visual Design',
+  '人像、产品精修、海报、活动物料，套装 99-299元': 'Portraits, product retouching, posters, campaign kits',
+  '高端定制开发': 'Premium Custom Development',
+  'APP双端、Web3 DApp、隐私加密类项目专属报价': 'Custom quotes for apps, Web3 DApps, privacy projects',
+  '长期包月合作': 'Monthly Retainer',
+  '门店、物业、公司长期视觉设计与维护迭代': 'Long-term visuals, maintenance, and iteration',
+  '政企级开发标准': 'Enterprise-grade standards',
+  '全端精细适配': 'Responsive refinement',
+  '真实存储交互': 'Real storage interactions',
+  '隐私加密能力': 'Privacy encryption',
+  '交付透明完整': 'Transparent delivery',
+  '线下可面谈': 'Offline meetings'
+  ,
+  '3屏首访转化': '3-screen first-visit conversion',
+  '地图/电话/微信联动': 'Map / phone / WeChat linked',
+  '移动端精修': 'Mobile polish',
+  '首页视觉与品牌调性': 'Homepage visual direction',
+  '服务/房型/作品模块': 'Services / rooms / portfolio modules',
+  '地图定位与悬浮联系': 'Map and floating contact',
+  'SEO标题与分享卡片': 'SEO title and social cards',
+  '手机端细节适配': 'Mobile detail adaptation',
+  '账号权限分级': 'Account role permissions',
+  '图文视频留存': 'Image/video retention',
+  '后台可追踪': 'Trackable admin records',
+  '注册登录与个人中心': 'Auth and profile center',
+  '图片/视频/文档上传': 'Image/video/document upload',
+  '文件状态流转': 'File status workflow',
+  '后台管理与权限': 'Admin and permissions',
+  '数据安全与部署': 'Data security and deployment',
+  '多指标看板': 'Multi-metric dashboard',
+  '权限审计': 'Permission audit',
+  '稳定部署': 'Stable deployment',
+  '指标体系梳理': 'Metric system planning',
+  '可视化大屏/后台': 'Visualization screen/admin',
+  '筛选查询与导出': 'Filtering, search, export',
+  '角色权限管理': 'Role permission management',
+  '服务器部署运维': 'Server deployment and ops',
+  '钱包连接': 'Wallet connection',
+  '隐私脱敏': 'Privacy masking',
+  '钱包连接与签名': 'Wallet connection and signing',
+  '智能合约前端交互': 'Smart contract frontend interactions',
+  '链上数据展示': 'On-chain data display',
+  '隐私加密/脱敏流程': 'Privacy encryption/masking flow',
+  'Web3项目官网配套': 'Web3 website support',
+  '固定风格批量出图': 'Batch output in fixed style',
+  '主图/海报/封面': 'Hero images / posters / covers',
+  '品牌视觉统一': 'Unified brand visuals',
+  '风格方向板': 'Style direction board',
+  '海报/封面/主图': 'Posters / covers / hero images',
+  '产品图AI精修': 'AI product retouching',
+  '社媒传播卡片': 'Social media cards',
+  '长期视觉模板': 'Long-term visual templates',
+  '确认客户行业、主推服务、转化动作和视觉气质。': 'Confirm industry, core services, conversion actions, and visual tone.',
+  '用AI和设计规范整理首屏图、色彩、字体和移动端版式。': 'Use AI and design rules to shape hero visuals, colors, typography, and mobile layout.',
+  '完成首页、服务、案例、地图、微信联系和SEO分享卡片。': 'Build homepage, services, cases, map, WeChat contact, SEO and social cards.',
+  '部署域名、检查手机端、测试按钮跳转和社交分享。': 'Deploy domain, check mobile layout, buttons, links, and social sharing.',
+  '拆客户、管理员、会员等角色，确定权限边界。': 'Split customer, admin, member roles and define permission boundaries.',
+  '设计图片/视频/文档上传、状态、审核和存储路径。': 'Design upload, status, review, and storage paths for images, videos, and docs.',
+  '搭建数据列表、详情、筛选、权限控制和文件预览。': 'Build data lists, detail views, filters, permissions, and file previews.',
+  '完成服务器、存储桶、数据库和后续迭代说明。': 'Deliver server, bucket, database, and future iteration notes.',
+  '把业务目标拆成访问、订单、转化、告警等核心指标。': 'Break business goals into traffic, orders, conversion, alerts, and other core metrics.',
+  '整理数据来源、接口字段、权限和刷新频率。': 'Organize sources, API fields, permissions, and refresh frequency.',
+  '完成趋势图、柱状图、筛选、导出和异常高亮。': 'Build trends, bars, filters, export, and anomaly highlighting.',
+  '部署、权限审计、性能检查和使用培训。': 'Deploy, audit permissions, check performance, and train users.',
+  '确认链、合约、钱包、签名和交易状态需求。': 'Confirm chain, contract, wallet, signing, and transaction-state needs.',
+  '设计连接钱包、授权、写入、失败提示和隐私展示。': 'Design wallet connection, authorization, writes, failure states, and privacy display.',
+  '接入合约方法、链上数据、状态轮询和异常处理。': 'Integrate contract methods, on-chain data, status polling, and error handling.',
+  '测试网验证、主网参数、域名部署和使用说明。': 'Verify testnet, mainnet parameters, domain deployment, and usage docs.',
+  '确认行业、目标客户、参考风格和禁用元素。': 'Confirm industry, target audience, references, and banned elements.',
+  '生成产品广告、服装模特、企业海报、社媒封面。': 'Generate product ads, fashion model visuals, enterprise posters, and social covers.',
+  '筛选高质量版本，统一色彩、构图和商业版式。': 'Select high-quality versions and unify color, composition, and commercial layout.',
+  '整理可复用模板，方便长期包月和批量出图。': 'Create reusable templates for retainers and batch visual output.'
 };
 
 const app = document.querySelector('#app');
@@ -328,7 +478,7 @@ function renderHome() {
       </section>
 
       <section class="marquee-wrap" aria-label="技能标签">
-        <div class="marquee">${[...skills, ...skills].map(skill => `<span>${skill}</span>`).join('')}</div>
+        <div class="marquee">${[...skills, ...skills].map(skill => `<span>${tr(skill)}</span>`).join('')}</div>
       </section>
 
       <section id="about" class="section about">
@@ -353,11 +503,11 @@ function renderHome() {
         <div class="template-grid">
           ${templates.map((item, index) => `
             <article class="template-card ${index === 1 ? 'featured' : ''}" tabindex="0">
-              <span class="badge">${item.badge}</span>
-              <h3>${item.title}</h3>
-              <p>${item.desc}</p>
+              <span class="badge">${tr(item.badge)}</span>
+              <h3>${tr(item.title)}</h3>
+              <p>${tr(item.desc)}</p>
               <div class="template-price">${item.price}</div>
-              <div class="mini-tags">${item.items.map(tag => `<span>${tag}</span>`).join('')}</div>
+              <div class="mini-tags">${item.items.map(tag => `<span>${tr(tag)}</span>`).join('')}</div>
             </article>
           `).join('')}
         </div>
@@ -372,8 +522,8 @@ function renderHome() {
           ${services.map(service => `
             <article class="service-card">
               <div class="service-index">${service.accent}</div>
-              <h3>${service.group}</h3>
-              <ul>${service.items.map(item => `<li>${item}</li>`).join('')}</ul>
+              <h3>${tr(service.group)}</h3>
+              <ul>${service.items.map(item => `<li>${tr(item)}</li>`).join('')}</ul>
             </article>
           `).join('')}
         </div>
@@ -398,7 +548,7 @@ function renderHome() {
         <div class="section-kicker">Why Me</div>
         <h2>${tr('不是只会做页面，是能把商业系统跑起来。')}</h2>
         <div class="advantage-list">
-          ${advantages.map((item, index) => `<div><span>${String(index + 1).padStart(2, '0')}</span>${item}</div>`).join('')}
+          ${advantages.map((item, index) => `<div><span>${String(index + 1).padStart(2, '0')}</span>${tr(item)}</div>`).join('')}
         </div>
       </section>
 
@@ -422,7 +572,7 @@ function renderHome() {
               <img src="/${item.cardImage}" alt="${item.title}演示图" loading="lazy" />
               <div>
                 <h3>${tr(item.title)}</h3>
-                <p>${item.desc}</p>
+                <p>${tr(item.desc)}</p>
               </div>
             </a>
           `).join('')}
@@ -433,18 +583,18 @@ function renderHome() {
         <div class="section-kicker">Pricing</div>
         <h2>${tr('合作价格参考')}</h2>
         <div class="price-table">
-          <div><strong>艺术极简宣传官网</strong><span>800-1500元</span><small>展示、地图、联系、艺术排版、移动端适配</small></div>
-          <div><strong>功能型官网 / 小程序</strong><span>1800-3500元</span><small>用户体系、个人中心、图片视频存储、交互和后台</small></div>
-          <div><strong>AI视觉设计服务</strong><span>20-50元/张</span><small>人像、产品精修、海报、活动物料，套装 99-299元</small></div>
-          <div><strong>高端定制开发</strong><span>按需评估</span><small>APP双端、Web3 DApp、隐私加密类项目专属报价</small></div>
-          <div><strong>长期包月合作</strong><span>优惠面议</span><small>门店、物业、公司长期视觉设计与维护迭代</small></div>
+          <div><strong>${tr('艺术极简宣传官网')}</strong><span>800-1500元</span><small>${tr('展示、地图、联系、艺术排版、移动端适配')}</small></div>
+          <div><strong>${tr('功能型官网 / 小程序')}</strong><span>1800-3500元</span><small>${tr('用户体系、个人中心、图片视频存储、交互和后台')}</small></div>
+          <div><strong>${tr('AI视觉设计服务')}</strong><span>20-50元/张</span><small>${tr('人像、产品精修、海报、活动物料，套装 99-299元')}</small></div>
+          <div><strong>${tr('高端定制开发')}</strong><span>${getLang() === 'en' ? 'Custom quote' : '按需评估'}</span><small>${tr('APP双端、Web3 DApp、隐私加密类项目专属报价')}</small></div>
+          <div><strong>${tr('长期包月合作')}</strong><span>${getLang() === 'en' ? 'Negotiable' : '优惠面议'}</span><small>${tr('门店、物业、公司长期视觉设计与维护迭代')}</small></div>
         </div>
       </section>
 
       <section class="section guarantees">
         <div class="section-head"><div><div class="section-kicker">Guarantees</div><h2>${tr('服务保障')}</h2></div></div>
         <div class="guarantee-grid">
-          ${['政企级开发标准', '全端精细适配', '真实存储交互', '隐私加密能力', '交付透明完整', '线下可面谈'].map(item => `<span>${item}</span>`).join('')}
+          ${['政企级开发标准', '全端精细适配', '真实存储交互', '隐私加密能力', '交付透明完整', '线下可面谈'].map(item => `<span>${tr(item)}</span>`).join('')}
         </div>
       </section>
 
@@ -486,7 +636,7 @@ function renderCasePage(study) {
           <a class="back-link" href="/#cases">${tr('返回案例列表')}</a>
           <p class="eyebrow">${study.eyebrow}</p>
           <h1>${tr(study.title)}</h1>
-          <p class="lead">${study.desc}</p>
+          <p class="lead">${tr(study.desc)}</p>
           <div class="hero-actions">
             <a class="primary" href="/#contact">${tr('咨询这个方向')}</a>
             <a class="secondary" href="#live-demo">${tr('看交互演示')}</a>
@@ -498,14 +648,14 @@ function renderCasePage(study) {
       </section>
 
       <section class="case-metrics">
-        ${study.metrics.map(metric => `<div><span>${metric}</span></div>`).join('')}
+        ${study.metrics.map(metric => `<div><span>${tr(metric)}</span></div>`).join('')}
       </section>
 
       <section id="live-demo" class="case-detail-grid">
         <aside>
           <div class="section-kicker">Deliverables</div>
           <h2>${tr('实际能交付什么')}</h2>
-          <ul class="check-list">${study.deliverables.map(item => `<li>${item}</li>`).join('')}</ul>
+          <ul class="check-list">${study.deliverables.map(item => `<li>${tr(item)}</li>`).join('')}</ul>
         </aside>
         ${demoPanel(study.demo)}
       </section>
