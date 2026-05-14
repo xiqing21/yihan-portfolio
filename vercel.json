@@ -1,4 +1,10 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/cases/:slug*",
+      "destination": "/index.html"
+    }
+  ]
 }
