@@ -132,7 +132,139 @@ const advantages = [
   '价格透明，无中间商溢价'
 ];
 
+const visualShowcase = [
+  ['visual-product-ad.png', '产品广告宣传图', 'Product campaign', '电商主图 / 详情首屏 / 社媒种草图'],
+  ['visual-fashion.png', '模特服装视觉图', 'Fashion lookbook', '服装上新 / 穿搭海报 / 模特氛围图'],
+  ['visual-enterprise.png', '企业海报视觉图', 'Enterprise poster', '品牌发布 / 活动宣传 / B2B物料'],
+  ['case-ai-hero.png', '潮流社媒视觉', 'Social trend visual', '封面卡片 / 活动KV / 朋友圈海报']
+];
+
+const workflowSteps = {
+  website: [
+    ['需求定位', '确认客户行业、主推服务、转化动作和视觉气质。'],
+    ['视觉生成', '用AI和设计规范整理首屏图、色彩、字体和移动端版式。'],
+    ['页面搭建', '完成首页、服务、案例、地图、微信联系和SEO分享卡片。'],
+    ['上线验收', '部署域名、检查手机端、测试按钮跳转和社交分享。']
+  ],
+  platform: [
+    ['角色拆解', '拆客户、管理员、会员等角色，确定权限边界。'],
+    ['上传链路', '设计图片/视频/文档上传、状态、审核和存储路径。'],
+    ['后台管理', '搭建数据列表、详情、筛选、权限控制和文件预览。'],
+    ['部署维护', '完成服务器、存储桶、数据库和后续迭代说明。']
+  ],
+  dashboard: [
+    ['指标定义', '把业务目标拆成访问、订单、转化、告警等核心指标。'],
+    ['数据接入', '整理数据来源、接口字段、权限和刷新频率。'],
+    ['图表交互', '完成趋势图、柱状图、筛选、导出和异常高亮。'],
+    ['稳定交付', '部署、权限审计、性能检查和使用培训。']
+  ],
+  web3: [
+    ['链路确认', '确认链、合约、钱包、签名和交易状态需求。'],
+    ['交互设计', '设计连接钱包、授权、写入、失败提示和隐私展示。'],
+    ['前端开发', '接入合约方法、链上数据、状态轮询和异常处理。'],
+    ['测试上线', '测试网验证、主网参数、域名部署和使用说明。']
+  ],
+  ai: [
+    ['风格采样', '确认行业、目标客户、参考风格和禁用元素。'],
+    ['批量生成', '生成产品广告、服装模特、企业海报、社媒封面。'],
+    ['精修定稿', '筛选高质量版本，统一色彩、构图和商业版式。'],
+    ['模板沉淀', '整理可复用模板，方便长期包月和批量出图。']
+  ]
+};
+
+const translations = {
+  '模板': 'Types',
+  '服务': 'Services',
+  '案例': 'Cases',
+  '价格': 'Pricing',
+  '联系': 'Contact',
+  '预约沟通': 'Start a Project',
+  '惠州 · 深圳可线下面谈 / 独立全栈交付': 'Huizhou / Shenzhen onsite meetings · independent full-stack delivery',
+  '全栈独立开发 + AI视觉创意 + Web3隐私DApp': 'Full-stack Development + AI Visuals + Web3 Privacy DApps',
+  '6年政企大数据全栈经验 + 3年Web3链上开发经验，一人包揽设计、开发、运维与上线交付。省钱、高质、可商用、可高密存储。': '6 years of enterprise-grade full-stack and big-data experience plus 3 years of Web3 development. Design, development, deployment, operations, and commercial launch handled end to end.',
+  '微信沟通': 'WeChat',
+  '看完整案例': 'View Cases',
+  '擅长': 'Expertise',
+  'APP / 小程序 / 官网定制开发、完整账号体系、图文视频存储交互、支付功能对接、AI商业视觉设计、区块链DApp开发。': 'Custom apps, mini programs, websites, account systems, media storage, payment flows, AI commercial visuals, and blockchain DApps.',
+  '我叫郑逸晗。': 'I am Zheng Yihan.',
+  '我是资深独立全栈开发者、UI视觉设计师、Web3区块链开发工程师。长期深耕政企产品设计、前后端全栈开发、大数据处理、商业化项目全流程管理，也能承接去中心化应用、隐私加密和链上交互相关项目。': 'I am an independent full-stack developer, UI visual designer, and Web3 blockchain engineer with experience across enterprise products, frontend/backend engineering, data processing, and commercial delivery.',
+  '我的工作方式很直接：需求梳理、UI艺术设计、后端程序开发、用户账号体系、图文视频云端存储、交互逻辑、部署上线、支付或链上交互，尽量在一个稳定闭环里完成。': 'My workflow is direct: requirements, visual design, backend development, user accounts, cloud media storage, interaction logic, deployment, payments, or on-chain flows in one stable delivery loop.',
+  '坐标': 'Location',
+  '广东惠州华润小径湾，紧邻深圳': 'China Resources Xiaojing Bay, Huizhou, near Shenzhen',
+  '可承接深惠两地线下面谈、上门对接项目。': 'Available for onsite meetings in Huizhou and Shenzhen.',
+  '客户可以直接选择的项目类型': 'Project Types Clients Can Choose',
+  '从低预算展示，到功能平台，再到 Web3 / APP 高端定制，先把范围讲清楚，报价和交付就不会扯皮。': 'From low-budget showcases to platforms and premium Web3/App builds, scope comes first so pricing and delivery stay clear.',
+  '服务列表': 'Services',
+  '服务按实际交付拆分，客户能看懂，也方便后续组合套餐。': 'Services are split by real delivery scope so clients understand what they are buying.',
+  'AI视觉行业案例': 'AI Visual Industry Demos',
+  '产品广告、服装模特、企业海报、潮流社媒图，都可以快速生成并精修成可商用视觉物料。': 'Product ads, fashion model visuals, enterprise posters, and trendy social images can be generated and refined into commercial-ready assets.',
+  '不是只会做页面，是能把商业系统跑起来。': 'Not just pages. I build systems that can actually run.',
+  '案例展示区': 'Case Studies',
+  '每个案例都有独立子页面：完整展示交付范围、交互 Demo、流程和适合客户类型。': 'Each case has its own page with scope, interactive demo, workflow, and fit.',
+  '合作价格参考': 'Pricing Reference',
+  '服务保障': 'Guarantees',
+  '项目想法可以先微信发我，适合就直接拆需求。': 'Send your project idea on WeChat and I will break it into a delivery plan.',
+  '服务范围：惠州全域 + 深圳全城可线下对接面谈。地址模块可直接跳转地图搜索。': 'Service area: Huizhou and Shenzhen onsite meetings. The address opens directly in map search.',
+  '复制微信：loveinslife': 'Copy WeChat: loveinslife',
+  '拨打电话：1760347432': 'Call: 1760347432',
+  '打开地图：华润小径湾听海轩': 'Open Map: Xiaojing Bay Tinghaixuan',
+  '微信扫码添加 · loveinslife': 'Scan WeChat · loveinslife',
+  '返回案例列表': 'Back to Cases',
+  '咨询这个方向': 'Ask About This',
+  '看交互演示': 'View Demo',
+  '实际能交付什么': 'What Gets Delivered',
+  '从想法到上线的流程': '0-1 Workflow',
+  '按真实项目推进，不只是做一张好看的图，而是把客户能用、能改、能传播的东西交出去。': 'A real project flow: not only visuals, but something clients can use, edit, and share.',
+  '继续看其他能力': 'More Capabilities',
+  '查看完整案例': 'View Full Case',
+  '艺术风企业官网': 'Artistic Business Website',
+  '存储交互小程序': 'Storage Mini Program',
+  '政企级数据后台': 'Enterprise Data Dashboard',
+  'Web3隐私DApp': 'Web3 Privacy DApp',
+  'AI商业视觉包': 'AI Commercial Visual Kit',
+  '产品广告宣传图': 'Product Advertising',
+  '模特服装视觉图': 'Fashion Model Visual',
+  '企业海报视觉图': 'Enterprise Poster',
+  '潮流社媒视觉': 'Trendy Social Visual',
+  '电商主图 / 详情首屏 / 社媒种草图': 'E-commerce hero / detail page / social seeding',
+  '服装上新 / 穿搭海报 / 模特氛围图': 'New arrivals / outfit posters / model atmosphere',
+  '品牌发布 / 活动宣传 / B2B物料': 'Brand launch / campaign / B2B materials',
+  '封面卡片 / 活动KV / 朋友圈海报': 'Cover cards / campaign KV / WeChat Moments posters',
+  '需求定位': 'Scope',
+  '视觉生成': 'Visuals',
+  '页面搭建': 'Build',
+  '上线验收': 'Launch',
+  '角色拆解': 'Roles',
+  '上传链路': 'Upload Flow',
+  '后台管理': 'Admin',
+  '部署维护': 'Ops',
+  '指标定义': 'Metrics',
+  '数据接入': 'Data',
+  '图表交互': 'Charts',
+  '稳定交付': 'Delivery',
+  '链路确认': 'Chain',
+  '交互设计': 'UX',
+  '前端开发': 'Frontend',
+  '测试上线': 'Testing',
+  '风格采样': 'Style',
+  '批量生成': 'Generate',
+  '精修定稿': 'Refine',
+  '模板沉淀': 'Template'
+};
+
 const app = document.querySelector('#app');
+
+const getLang = () => localStorage.getItem('lang') || 'zh';
+const getTheme = () => localStorage.getItem('theme') || 'light';
+
+function applyShellState() {
+  document.documentElement.dataset.theme = getTheme();
+  document.documentElement.lang = getLang() === 'en' ? 'en' : 'zh-CN';
+}
+
+function tr(text) {
+  return getLang() === 'en' ? translations[text] || text : text;
+}
 
 function header() {
   return `
@@ -142,13 +274,17 @@ function header() {
         <small>Yihan.me</small>
       </a>
       <nav aria-label="主导航">
-        <a href="/#templates">模板</a>
-        <a href="/#services">服务</a>
-        <a href="/#cases">案例</a>
-        <a href="/#pricing">价格</a>
-        <a href="/#contact">联系</a>
+        <a href="/#templates">${tr('模板')}</a>
+        <a href="/#services">${tr('服务')}</a>
+        <a href="/#cases">${tr('案例')}</a>
+        <a href="/#pricing">${tr('价格')}</a>
+        <a href="/#contact">${tr('联系')}</a>
       </nav>
-      <a class="header-cta" href="/#contact">预约沟通</a>
+      <div class="header-tools">
+        <button class="tool-toggle" id="themeToggle" type="button" aria-label="切换明暗模式">${getTheme() === 'dark' ? '☀' : '☾'}</button>
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="切换语言">${getLang() === 'en' ? '中文' : 'EN'}</button>
+        <a class="header-cta" href="/#contact">${tr('预约沟通')}</a>
+      </div>
     </header>
   `;
 }
@@ -159,6 +295,7 @@ function footer() {
       <span>© ${new Date().getFullYear()} 郑逸晗 Yihan</span>
       <a href="https://yihan.me/">yihan.me</a>
     </footer>
+    <button class="back-top" id="backTop" type="button" aria-label="回到顶部">↑</button>
   `;
 }
 
@@ -175,17 +312,17 @@ function renderHome() {
           <div class="studio-panel"><span></span><span></span><span></span><span></span></div>
         </div>
         <div class="hero-copy reveal">
-          <p class="eyebrow">惠州 · 深圳可线下面谈 / 独立全栈交付</p>
-          <h1>全栈独立开发 + AI视觉创意 + Web3隐私DApp</h1>
-          <p class="lead">6年政企大数据全栈经验 + 3年Web3链上开发经验，一人包揽设计、开发、运维与上线交付。省钱、高质、可商用、可高密存储。</p>
+          <p class="eyebrow">${tr('惠州 · 深圳可线下面谈 / 独立全栈交付')}</p>
+          <h1>${tr('全栈独立开发 + AI视觉创意 + Web3隐私DApp')}</h1>
+          <p class="lead">${tr('6年政企大数据全栈经验 + 3年Web3链上开发经验，一人包揽设计、开发、运维与上线交付。省钱、高质、可商用、可高密存储。')}</p>
           <div class="hero-actions">
-            <a class="primary" href="#contact">微信沟通</a>
-            <a class="secondary" href="#cases">看完整案例</a>
+            <a class="primary" href="#contact">${tr('微信沟通')}</a>
+            <a class="secondary" href="#cases">${tr('看完整案例')}</a>
           </div>
         </div>
         <aside class="hero-card reveal delay-1" aria-label="核心能力">
-          <strong>擅长</strong>
-          <p>APP / 小程序 / 官网定制开发、完整账号体系、图文视频存储交互、支付功能对接、AI商业视觉设计、区块链DApp开发。</p>
+          <strong>${tr('擅长')}</strong>
+          <p>${tr('APP / 小程序 / 官网定制开发、完整账号体系、图文视频存储交互、支付功能对接、AI商业视觉设计、区块链DApp开发。')}</p>
           <div class="signal-row"><span>Design</span><span>Code</span><span>Deploy</span><span>Maintain</span></div>
         </aside>
       </section>
@@ -197,21 +334,21 @@ function renderHome() {
       <section id="about" class="section about">
         <div class="section-kicker">About</div>
         <div>
-          <h2>我叫郑逸晗。</h2>
-          <p>我是资深独立全栈开发者、UI视觉设计师、Web3区块链开发工程师。长期深耕政企产品设计、前后端全栈开发、大数据处理、商业化项目全流程管理，也能承接去中心化应用、隐私加密和链上交互相关项目。</p>
-          <p>我的工作方式很直接：需求梳理、UI艺术设计、后端程序开发、用户账号体系、图文视频云端存储、交互逻辑、部署上线、支付或链上交互，尽量在一个稳定闭环里完成。</p>
+          <h2>${tr('我叫郑逸晗。')}</h2>
+          <p>${tr('我是资深独立全栈开发者、UI视觉设计师、Web3区块链开发工程师。长期深耕政企产品设计、前后端全栈开发、大数据处理、商业化项目全流程管理，也能承接去中心化应用、隐私加密和链上交互相关项目。')}</p>
+          <p>${tr('我的工作方式很直接：需求梳理、UI艺术设计、后端程序开发、用户账号体系、图文视频云端存储、交互逻辑、部署上线、支付或链上交互，尽量在一个稳定闭环里完成。')}</p>
         </div>
         <div class="about-note">
-          <span>坐标</span>
-          <a href="#contact">广东惠州华润小径湾，紧邻深圳</a>
-          <small>可承接深惠两地线下面谈、上门对接项目。</small>
+          <span>${tr('坐标')}</span>
+          <a href="#contact">${tr('广东惠州华润小径湾，紧邻深圳')}</a>
+          <small>${tr('可承接深惠两地线下面谈、上门对接项目。')}</small>
         </div>
       </section>
 
       <section id="templates" class="section">
         <div class="section-head">
-          <div><div class="section-kicker">Project Types</div><h2>客户可以直接选择的项目类型</h2></div>
-          <p>从低预算展示，到功能平台，再到 Web3 / APP 高端定制，先把范围讲清楚，报价和交付就不会扯皮。</p>
+          <div><div class="section-kicker">Project Types</div><h2>${tr('客户可以直接选择的项目类型')}</h2></div>
+          <p>${tr('从低预算展示，到功能平台，再到 Web3 / APP 高端定制，先把范围讲清楚，报价和交付就不会扯皮。')}</p>
         </div>
         <div class="template-grid">
           ${templates.map((item, index) => `
@@ -228,8 +365,8 @@ function renderHome() {
 
       <section id="services" class="section services">
         <div class="section-head">
-          <div><div class="section-kicker">Services</div><h2>服务列表</h2></div>
-          <p>服务按实际交付拆分，客户能看懂，也方便后续组合套餐。</p>
+          <div><div class="section-kicker">Services</div><h2>${tr('服务列表')}</h2></div>
+          <p>${tr('服务按实际交付拆分，客户能看懂，也方便后续组合套餐。')}</p>
         </div>
         <div class="service-grid">
           ${services.map(service => `
@@ -242,9 +379,24 @@ function renderHome() {
         </div>
       </section>
 
+      <section id="visuals" class="section visual-showcase">
+        <div class="section-head">
+          <div><div class="section-kicker">AI Visuals</div><h2>${tr('AI视觉行业案例')}</h2></div>
+          <p>${tr('产品广告、服装模特、企业海报、潮流社媒图，都可以快速生成并精修成可商用视觉物料。')}</p>
+        </div>
+        <div class="visual-grid">
+          ${visualShowcase.map(([image, title, label, desc], index) => `
+            <article class="visual-card ${index === 0 ? 'large' : ''}">
+              <img src="/${image}" alt="${title}" loading="lazy" />
+              <div><span>${label}</span><h3>${tr(title)}</h3><p>${tr(desc)}</p></div>
+            </article>
+          `).join('')}
+        </div>
+      </section>
+
       <section id="advantages" class="section advantages">
         <div class="section-kicker">Why Me</div>
-        <h2>不是只会做页面，是能把商业系统跑起来。</h2>
+        <h2>${tr('不是只会做页面，是能把商业系统跑起来。')}</h2>
         <div class="advantage-list">
           ${advantages.map((item, index) => `<div><span>${String(index + 1).padStart(2, '0')}</span>${item}</div>`).join('')}
         </div>
@@ -252,24 +404,24 @@ function renderHome() {
 
       <section id="cases" class="section cases">
         <div class="section-head">
-          <div><div class="section-kicker">Cases</div><h2>案例展示区</h2></div>
-          <p>每个案例都有独立子页面：完整展示交付范围、交互 Demo、流程和适合客户类型。</p>
+          <div><div class="section-kicker">Cases</div><h2>${tr('案例展示区')}</h2></div>
+          <p>${tr('每个案例都有独立子页面：完整展示交付范围、交互 Demo、流程和适合客户类型。')}</p>
         </div>
         <div class="case-filters" role="tablist" aria-label="案例分类">
-          <button class="active" data-filter="all">全部</button>
-          <button data-filter="tech">官网</button>
-          <button data-filter="platform">平台</button>
-          <button data-filter="data">数据</button>
+          <button class="active" data-filter="all">${getLang() === 'en' ? 'All' : '全部'}</button>
+          <button data-filter="tech">${getLang() === 'en' ? 'Website' : '官网'}</button>
+          <button data-filter="platform">${getLang() === 'en' ? 'Platform' : '平台'}</button>
+          <button data-filter="data">${getLang() === 'en' ? 'Data' : '数据'}</button>
           <button data-filter="web3">Web3</button>
-          <button data-filter="ai">AI视觉</button>
+          <button data-filter="ai">${getLang() === 'en' ? 'AI Visual' : 'AI视觉'}</button>
         </div>
         <div class="case-grid">
           ${caseStudies.map(item => `
             <a class="case-card" href="/cases/${item.slug}" data-type="${item.type}">
-              <span class="case-open">查看完整案例</span>
+              <span class="case-open">${tr('查看完整案例')}</span>
               <img src="/${item.cardImage}" alt="${item.title}演示图" loading="lazy" />
               <div>
-                <h3>${item.title}</h3>
+                <h3>${tr(item.title)}</h3>
                 <p>${item.desc}</p>
               </div>
             </a>
@@ -279,7 +431,7 @@ function renderHome() {
 
       <section id="pricing" class="section pricing">
         <div class="section-kicker">Pricing</div>
-        <h2>合作价格参考</h2>
+        <h2>${tr('合作价格参考')}</h2>
         <div class="price-table">
           <div><strong>艺术极简宣传官网</strong><span>800-1500元</span><small>展示、地图、联系、艺术排版、移动端适配</small></div>
           <div><strong>功能型官网 / 小程序</strong><span>1800-3500元</span><small>用户体系、个人中心、图片视频存储、交互和后台</small></div>
@@ -290,7 +442,7 @@ function renderHome() {
       </section>
 
       <section class="section guarantees">
-        <div class="section-head"><div><div class="section-kicker">Guarantees</div><h2>服务保障</h2></div></div>
+        <div class="section-head"><div><div class="section-kicker">Guarantees</div><h2>${tr('服务保障')}</h2></div></div>
         <div class="guarantee-grid">
           ${['政企级开发标准', '全端精细适配', '真实存储交互', '隐私加密能力', '交付透明完整', '线下可面谈'].map(item => `<span>${item}</span>`).join('')}
         </div>
@@ -307,18 +459,18 @@ function contactSection() {
     <section id="contact" class="contact">
       <div>
         <div class="section-kicker">Contact</div>
-        <h2>项目想法可以先微信发我，适合就直接拆需求。</h2>
-        <p>服务范围：惠州全域 + 深圳全城可线下对接面谈。地址模块可直接跳转地图搜索。</p>
+        <h2>${tr('项目想法可以先微信发我，适合就直接拆需求。')}</h2>
+        <p>${tr('服务范围：惠州全域 + 深圳全城可线下对接面谈。地址模块可直接跳转地图搜索。')}</p>
         <div class="contact-actions">
-          <button id="copyWechat" type="button">复制微信：loveinslife</button>
-          <a href="tel:1760347432">拨打电话：1760347432</a>
-          <a target="_blank" rel="noreferrer" href="https://uri.amap.com/search?keyword=%E5%8D%8E%E6%B6%A6%E5%B0%8F%E5%BE%84%E6%B9%BE%E5%90%AC%E6%B5%B7%E8%BD%A9&city=%E6%83%A0%E5%B7%9E">打开地图：华润小径湾听海轩</a>
+          <button id="copyWechat" type="button">${tr('复制微信：loveinslife')}</button>
+          <a href="tel:1760347432">${tr('拨打电话：1760347432')}</a>
+          <a target="_blank" rel="noreferrer" href="https://uri.amap.com/search?keyword=%E5%8D%8E%E6%B6%A6%E5%B0%8F%E5%BE%84%E6%B9%BE%E5%90%AC%E6%B5%B7%E8%BD%A9&city=%E6%83%A0%E5%B7%9E">${tr('打开地图：华润小径湾听海轩')}</a>
         </div>
         <p class="copy-status" aria-live="polite"></p>
       </div>
       <figure class="qr-card">
         <img src="/wechat-qr.jpg" alt="郑逸晗微信二维码" />
-        <figcaption>微信扫码添加 · loveinslife</figcaption>
+        <figcaption>${tr('微信扫码添加 · loveinslife')}</figcaption>
       </figure>
     </section>
   `;
@@ -331,13 +483,13 @@ function renderCasePage(study) {
     <main class="case-page">
       <section class="case-hero-detail">
         <div>
-          <a class="back-link" href="/#cases">返回案例列表</a>
+          <a class="back-link" href="/#cases">${tr('返回案例列表')}</a>
           <p class="eyebrow">${study.eyebrow}</p>
-          <h1>${study.title}</h1>
+          <h1>${tr(study.title)}</h1>
           <p class="lead">${study.desc}</p>
           <div class="hero-actions">
-            <a class="primary" href="/#contact">咨询这个方向</a>
-            <a class="secondary" href="#live-demo">看交互演示</a>
+            <a class="primary" href="/#contact">${tr('咨询这个方向')}</a>
+            <a class="secondary" href="#live-demo">${tr('看交互演示')}</a>
           </div>
         </div>
         <figure class="case-visual">
@@ -352,7 +504,7 @@ function renderCasePage(study) {
       <section id="live-demo" class="case-detail-grid">
         <aside>
           <div class="section-kicker">Deliverables</div>
-          <h2>实际能交付什么</h2>
+          <h2>${tr('实际能交付什么')}</h2>
           <ul class="check-list">${study.deliverables.map(item => `<li>${item}</li>`).join('')}</ul>
         </aside>
         ${demoPanel(study.demo)}
@@ -360,19 +512,19 @@ function renderCasePage(study) {
 
       <section class="case-process section visible">
         <div class="section-head">
-          <div><div class="section-kicker">Workflow</div><h2>从想法到上线的流程</h2></div>
-          <p>按真实项目推进，不只是做一张好看的图，而是把客户能用、能改、能传播的东西交出去。</p>
+          <div><div class="section-kicker">Workflow</div><h2>${tr('从想法到上线的流程')}</h2></div>
+          <p>${tr('按真实项目推进，不只是做一张好看的图，而是把客户能用、能改、能传播的东西交出去。')}</p>
         </div>
         <div class="process-grid">
-          ${study.process.map((item, index) => `<div><span>${String(index + 1).padStart(2, '0')}</span><strong>${item}</strong></div>`).join('')}
+          ${study.process.map((item, index) => `<div><span>${String(index + 1).padStart(2, '0')}</span><strong>${tr(item)}</strong></div>`).join('')}
         </div>
       </section>
 
       <section class="related-cases section visible">
         <div class="section-kicker">More Cases</div>
-        <h2>继续看其他能力</h2>
+        <h2>${tr('继续看其他能力')}</h2>
         <div class="related-grid">
-          ${caseStudies.filter(item => item.slug !== study.slug).map(item => `<a href="/cases/${item.slug}"><span>${item.eyebrow}</span><strong>${item.title}</strong></a>`).join('')}
+          ${caseStudies.filter(item => item.slug !== study.slug).map(item => `<a href="/cases/${item.slug}"><span>${item.eyebrow}</span><strong>${tr(item.title)}</strong></a>`).join('')}
         </div>
       </section>
 
@@ -383,9 +535,26 @@ function renderCasePage(study) {
 }
 
 function demoPanel(type) {
+  const flow = workflowSteps[type].map(([title], index) => `
+    <button class="${index === 0 ? 'active' : ''}" data-flow-step="${index}" type="button">
+      <span>${String(index + 1).padStart(2, '0')}</span>${tr(title)}
+    </button>
+  `).join('');
+  const first = workflowSteps[type][0];
+  const flowShell = `
+    <div class="flow-demo" data-flow="${type}">
+      <div class="flow-tabs">${flow}</div>
+      <div class="flow-screen">
+        <span>01</span>
+        <h3>${tr(first[0])}</h3>
+        <p>${tr(first[1])}</p>
+      </div>
+    </div>
+  `;
   const panels = {
     website: `
       <div class="case-demo website-demo-panel">
+        ${flowShell}
         <div class="browser-chrome"><i></i><i></i><i></i><span>xiaojingbay.studio</span></div>
         <div class="site-preview">
           <div class="site-preview-hero">
@@ -403,6 +572,7 @@ function demoPanel(type) {
     `,
     platform: `
       <div class="case-demo platform-demo-panel">
+        ${flowShell}
         <div class="upload-board">
           <div class="upload-progress"><i></i></div>
           <ul>
@@ -420,6 +590,7 @@ function demoPanel(type) {
     `,
     dashboard: `
       <div class="case-demo dashboard-demo-panel">
+        ${flowShell}
         <div class="dash-head"><span>实时业务看板</span><b>98.7%</b></div>
         <div class="bars">${[42, 68, 54, 88, 76, 96, 64].map(v => `<i style="--h:${v}%"></i>`).join('')}</div>
         <div class="dash-cards"><div>访问增长 +32%</div><div>订单转化 8.4%</div><div>告警 0</div></div>
@@ -427,6 +598,7 @@ function demoPanel(type) {
     `,
     web3: `
       <div class="case-demo web3-demo-panel">
+        ${flowShell}
         <div class="chain-orbit"><b></b><b></b><b></b><b></b><strong>Encrypted</strong></div>
         <div class="wallet-card">
           <span>Wallet</span>
@@ -437,6 +609,7 @@ function demoPanel(type) {
     `,
     ai: `
       <div class="case-demo ai-demo-panel">
+        ${flowShell}
         <div class="poster-preview">
           <span>Campaign Kit</span>
           <strong>商业视觉</strong>
@@ -455,6 +628,8 @@ function demoPanel(type) {
 }
 
 function bindCommonInteractions() {
+  applyShellState();
+
   document.querySelectorAll('.case-filters button').forEach(button => {
     button.addEventListener('click', () => {
       const filter = button.dataset.filter;
@@ -465,6 +640,22 @@ function bindCommonInteractions() {
       });
     });
   });
+
+  document.querySelector('#themeToggle')?.addEventListener('click', () => {
+    localStorage.setItem('theme', getTheme() === 'dark' ? 'light' : 'dark');
+    rerenderCurrentPage();
+  });
+
+  document.querySelector('#langToggle')?.addEventListener('click', () => {
+    localStorage.setItem('lang', getLang() === 'en' ? 'zh' : 'en');
+    rerenderCurrentPage();
+  });
+
+  const backTop = document.querySelector('#backTop');
+  window.addEventListener('scroll', () => {
+    backTop?.classList.toggle('visible', window.scrollY > 680);
+  }, { passive: true });
+  backTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   document.querySelector('#copyWechat')?.addEventListener('click', async () => {
     const status = document.querySelector('.copy-status');
@@ -493,6 +684,19 @@ function bindCommonInteractions() {
     if (target.dataset.theme) {
       document.querySelector('.poster-preview')?.setAttribute('data-theme', target.dataset.theme);
     }
+
+    if (target.dataset.flowStep) {
+      const flowRoot = target.closest('.flow-demo');
+      const steps = workflowSteps[flowRoot.dataset.flow];
+      const index = Number(target.dataset.flowStep);
+      flowRoot.querySelectorAll('.flow-tabs button').forEach(button => button.classList.remove('active'));
+      target.classList.add('active');
+      flowRoot.querySelector('.flow-screen').innerHTML = `
+        <span>${String(index + 1).padStart(2, '0')}</span>
+        <h3>${tr(steps[index][0])}</h3>
+        <p>${tr(steps[index][1])}</p>
+      `;
+    }
   });
 
   const observer = new IntersectionObserver(entries => {
@@ -504,8 +708,21 @@ function bindCommonInteractions() {
   document.querySelectorAll('.section, .reveal').forEach(el => observer.observe(el));
 }
 
+function rerenderCurrentPage() {
+  const current = window.location.pathname.match(/^\/cases\/([^/]+)\/?$/);
+  const currentStudy = current ? caseStudies.find(item => item.slug === current[1]) : null;
+  if (currentStudy) {
+    renderCasePage(currentStudy);
+  } else {
+    renderHome();
+  }
+  bindCommonInteractions();
+}
+
 const match = window.location.pathname.match(/^\/cases\/([^/]+)\/?$/);
 const study = match ? caseStudies.find(item => item.slug === match[1]) : null;
+
+applyShellState();
 
 if (study) {
   renderCasePage(study);

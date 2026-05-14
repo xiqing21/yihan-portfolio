@@ -13,6 +13,20 @@
   font-family: "Avenir Next", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #f4efe6;
+  --muted: #b8c9c4;
+  --paper: #081412;
+  --porcelain: #10201d;
+  --jade: #5fd0b2;
+  --jade-dark: #d8f3ea;
+  --sea: #1f6d64;
+  --gold: #e2b65c;
+  --line: rgba(244, 239, 230, 0.16);
+  --shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -30,6 +44,7 @@ body {
     linear-gradient(0deg, rgba(13, 47, 44, 0.05) 1px, transparent 1px),
     var(--paper);
   background-size: 42px 42px;
+  transition: background 0.28s ease, color 0.28s ease;
 }
 
 a {
@@ -54,6 +69,10 @@ a {
   border-bottom: 1px solid rgba(16, 32, 29, 0.08);
   background: rgba(248, 243, 234, 0.82);
   backdrop-filter: blur(18px);
+}
+
+:root[data-theme="dark"] .site-header {
+  background: rgba(8, 20, 18, 0.82);
 }
 
 .brand {
@@ -89,6 +108,44 @@ footer a:hover {
   color: var(--jade);
 }
 
+.header-tools {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: end;
+}
+
+.tool-toggle,
+.lang-toggle {
+  display: inline-flex;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(255, 250, 242, 0.72);
+  cursor: pointer;
+  font-weight: 800;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+:root[data-theme="dark"] .tool-toggle,
+:root[data-theme="dark"] .lang-toggle,
+:root[data-theme="dark"] .secondary,
+:root[data-theme="dark"] .contact-actions a {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tool-toggle:hover,
+.lang-toggle:hover {
+  transform: translateY(-2px);
+  color: var(--porcelain);
+  background: var(--jade);
+}
+
 .header-cta,
 .primary,
 .secondary,
@@ -112,6 +169,12 @@ footer a:hover {
   color: var(--porcelain);
   background: var(--jade-dark);
   border-color: var(--jade-dark);
+}
+
+:root[data-theme="dark"] .header-cta,
+:root[data-theme="dark"] .primary,
+:root[data-theme="dark"] .contact-actions button {
+  color: #07120f;
 }
 
 .secondary,
@@ -278,6 +341,10 @@ h3 {
   color: #354842;
   font-size: clamp(18px, 2vw, 24px);
   line-height: 1.7;
+}
+
+:root[data-theme="dark"] .lead {
+  color: var(--muted);
 }
 
 .hero-actions {
@@ -588,6 +655,84 @@ h3 {
   background: var(--jade);
 }
 
+.visual-showcase {
+  width: min(1280px, calc(100% - 36px));
+}
+
+.visual-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr;
+  gap: 16px;
+}
+
+.visual-card {
+  position: relative;
+  min-height: 320px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--porcelain);
+  box-shadow: 0 12px 34px rgba(13, 47, 44, 0.08);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.visual-card.large {
+  grid-row: span 2;
+  min-height: 656px;
+}
+
+.visual-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.42s ease, filter 0.42s ease;
+}
+
+.visual-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(8, 20, 18, 0.78));
+}
+
+.visual-card div {
+  position: absolute;
+  z-index: 1;
+  inset: auto 18px 18px;
+  color: #fffaf2;
+}
+
+.visual-card span {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.visual-card h3 {
+  margin: 8px 0;
+  font-family: Georgia, "Songti SC", serif;
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.08;
+}
+
+.visual-card p {
+  margin: 0;
+  color: rgba(255, 250, 242, 0.82);
+}
+
+.visual-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+}
+
+.visual-card:hover img {
+  transform: scale(1.06);
+  filter: saturate(1.12) contrast(1.06);
+}
+
 .advantages {
   display: grid;
   grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1fr);
@@ -828,6 +973,36 @@ footer {
   color: var(--muted);
 }
 
+.back-top {
+  position: fixed;
+  right: clamp(16px, 3vw, 34px);
+  bottom: clamp(16px, 3vw, 34px);
+  z-index: 30;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--porcelain);
+  background: var(--jade-dark);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.back-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-top:hover {
+  color: var(--ink);
+  background: var(--gold);
+}
+
 .case-page {
   overflow: hidden;
 }
@@ -954,6 +1129,77 @@ footer {
   box-shadow: var(--shadow);
 }
 
+.flow-demo {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.42fr) minmax(0, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.flow-tabs {
+  display: grid;
+  gap: 8px;
+}
+
+.flow-tabs button {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--muted);
+  background: rgba(255, 250, 242, 0.72);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+}
+
+.flow-tabs button span {
+  color: var(--gold);
+  font-family: Georgia, serif;
+  font-weight: 800;
+}
+
+.flow-tabs button:hover,
+.flow-tabs button.active {
+  transform: translateX(6px);
+  color: var(--porcelain);
+  background: var(--jade-dark);
+}
+
+:root[data-theme="dark"] .flow-tabs button:hover,
+:root[data-theme="dark"] .flow-tabs button.active {
+  color: #07120f;
+}
+
+.flow-screen {
+  min-height: 170px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(214, 162, 74, 0.18), transparent 32%),
+    rgba(255, 250, 242, 0.72);
+}
+
+.flow-screen span {
+  color: var(--gold);
+  font-family: Georgia, serif;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.flow-screen h3 {
+  margin: 16px 0 10px;
+}
+
+.flow-screen p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .website-demo-panel {
   background:
     linear-gradient(135deg, rgba(255, 250, 242, 0.9), rgba(213, 236, 231, 0.74)),
@@ -1035,6 +1281,13 @@ footer {
   grid-template-columns: minmax(0, 1fr) 220px;
   gap: 18px;
   align-items: stretch;
+}
+
+.platform-demo-panel .flow-demo,
+.dashboard-demo-panel .flow-demo,
+.web3-demo-panel .flow-demo,
+.ai-demo-panel .flow-demo {
+  grid-column: 1 / -1;
 }
 
 .admin-mini {
