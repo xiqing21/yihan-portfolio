@@ -615,6 +615,16 @@ h3 {
   gap: 8px;
 }
 
+.mini-tags em {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: var(--muted);
+  background: var(--chip);
+  font-style: normal;
+  font-size: 12px;
+}
+
 .featured .mini-tags span {
   color: var(--porcelain);
   border-color: rgba(255, 250, 242, 0.28);
@@ -743,6 +753,141 @@ h3 {
 .visual-card:hover img {
   transform: scale(1.06);
   filter: saturate(1.12) contrast(1.06);
+}
+
+.live-projects {
+  width: min(1280px, calc(100% - 36px));
+}
+
+.real-project-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 18px;
+}
+
+.real-project-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.65fr);
+  min-height: 380px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 0 18px 52px rgba(13, 47, 44, 0.1);
+  isolation: isolate;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+}
+
+.real-project-card.wide {
+  grid-row: span 2;
+  grid-template-columns: 1fr;
+}
+
+.real-project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(214, 162, 74, 0.22), transparent 34%),
+    linear-gradient(135deg, rgba(15, 107, 88, 0.18), transparent 58%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.real-project-shot {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  background: rgba(8, 20, 18, 0.08);
+}
+
+.real-project-shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 250, 242, 0.16);
+  pointer-events: none;
+}
+
+.real-project-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.48s ease, filter 0.48s ease;
+}
+
+.real-project-card.wide .real-project-shot {
+  min-height: 430px;
+}
+
+.real-project-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 12px;
+  padding: clamp(20px, 3vw, 30px);
+}
+
+.real-project-body span {
+  width: fit-content;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 11px;
+  color: var(--jade);
+  background: var(--chip);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.real-project-body h3 {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 38px);
+}
+
+.real-project-body p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.real-project-body strong {
+  margin-top: 4px;
+  color: var(--jade);
+  font-size: 14px;
+}
+
+.real-project-card:hover,
+.real-project-card:focus-visible {
+  transform: translateY(-8px);
+  border-color: rgba(15, 107, 88, 0.42);
+  box-shadow: var(--shadow);
+}
+
+.real-project-card:hover::before,
+.real-project-card:focus-visible::before {
+  opacity: 1;
+}
+
+.real-project-card:hover img,
+.real-project-card:focus-visible img {
+  transform: scale(1.055);
+  filter: saturate(1.08) contrast(1.05);
+}
+
+.real-project-card:hover .real-project-body span,
+.real-project-card:focus-visible .real-project-body span {
+  color: var(--porcelain);
+  background: var(--jade);
+}
+
+:root[data-theme="dark"] .real-project-card:hover .real-project-body span,
+:root[data-theme="dark"] .real-project-card:focus-visible .real-project-body span {
+  color: #07120f;
 }
 
 .advantages {
@@ -1821,6 +1966,8 @@ footer {
   .contact,
   .case-hero-detail,
   .case-detail-grid,
+  .real-project-grid,
+  .real-project-card,
   .web3-demo-panel,
   .ai-demo-panel,
   .platform-demo-panel {
@@ -1846,6 +1993,15 @@ footer {
   .template-grid,
   .service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .real-project-card.wide {
+    grid-row: auto;
+  }
+
+  .real-project-card.wide .real-project-shot,
+  .real-project-shot {
+    min-height: 300px;
   }
 
   .guarantee-grid {
@@ -1901,9 +2057,19 @@ footer {
   .signal-row,
   .template-grid,
   .service-grid,
+  .real-project-grid,
   .guarantee-grid,
   .price-table div {
     grid-template-columns: 1fr;
+  }
+
+  .real-project-card {
+    min-height: auto;
+  }
+
+  .real-project-card.wide .real-project-shot,
+  .real-project-shot {
+    min-height: 220px;
   }
 
   .template-card {

@@ -139,6 +139,33 @@ const visualShowcase = [
   ['case-ai-hero.png', '潮流社媒视觉', 'Social trend visual', '封面卡片 / 活动KV / 朋友圈海报']
 ];
 
+const realProjects = [
+  {
+    title: '一级芯界公司官网',
+    label: 'Company Website',
+    desc: '企业级数据智能官网，首屏强调品牌可信度、产品方向和试用转化。',
+    image: 'real-case-company.webp',
+    url: 'https://yijxj.com/',
+    tags: ['企业官网', 'AI数据智能', '品牌首屏']
+  },
+  {
+    title: 'Liubai CV AI简历优化',
+    label: 'AI Resume SaaS',
+    desc: '面向 Web3 岗位的简历优化产品，包含登录、模板、岗位信号和商业转化路径。',
+    image: 'real-case-liubai.webp',
+    url: 'https://liubai.cloud/zh',
+    tags: ['AI产品', '简历优化', 'Web3求职']
+  },
+  {
+    title: '司法鉴定行业史',
+    label: 'Industry Archive',
+    desc: '司法鉴定历史与知识型网站，用重视觉叙事承载行业内容、资料目录和长期阅读。',
+    image: 'real-case-sifa.webp',
+    url: 'https://sifa.yihan.me',
+    tags: ['行业网站', '司法鉴定', '内容叙事']
+  }
+];
+
 const workflowSteps = {
   website: [
     ['需求定位', '确认客户行业、主推服务、转化动作和视觉气质。'],
@@ -175,6 +202,7 @@ const workflowSteps = {
 const translations = {
   '模板': 'Types',
   '服务': 'Services',
+  '作品': 'Work',
   '案例': 'Cases',
   '价格': 'Pricing',
   '联系': 'Contact',
@@ -198,6 +226,9 @@ const translations = {
   '服务按实际交付拆分，客户能看懂，也方便后续组合套餐。': 'Services are split by real delivery scope so clients understand what they are buying.',
   'AI视觉行业案例': 'AI Visual Industry Demos',
   '产品广告、服装模特、企业海报、潮流社媒图，都可以快速生成并精修成可商用视觉物料。': 'Product ads, fashion model visuals, enterprise posters, and trendy social images can be generated and refined into commercial-ready assets.',
+  '真实上线项目': 'Live Projects',
+  '这里放的是已经上线的真实站点截图，客户可以直接点击访问原项目，比单纯概念图更有信任感。': 'These are screenshots from live projects. Visitors can open the real sites directly, which builds more trust than concept-only demos.',
+  '访问项目': 'Open Project',
   '不是只会做页面，是能把商业系统跑起来。': 'Not just pages. I build systems that can actually run.',
   '案例展示区': 'Case Studies',
   '每个案例都有独立子页面：完整展示交付范围、交互 Demo、流程和适合客户类型。': 'Each case has its own page with scope, interactive demo, workflow, and fit.',
@@ -226,6 +257,21 @@ const translations = {
   '模特服装视觉图': 'Fashion Model Visual',
   '企业海报视觉图': 'Enterprise Poster',
   '潮流社媒视觉': 'Trendy Social Visual',
+  '一级芯界公司官网': 'Yiji Xinjie Company Website',
+  'Liubai CV AI简历优化': 'Liubai CV AI Resume Optimization',
+  '司法鉴定行业史': 'Forensic Appraisal Industry History',
+  '企业级数据智能官网，首屏强调品牌可信度、产品方向和试用转化。': 'An enterprise data intelligence website focused on brand credibility, product direction, and trial conversion.',
+  '面向 Web3 岗位的简历优化产品，包含登录、模板、岗位信号和商业转化路径。': 'A resume optimization product for Web3 roles with authentication, templates, job signals, and conversion paths.',
+  '司法鉴定历史与知识型网站，用重视觉叙事承载行业内容、资料目录和长期阅读。': 'A forensic appraisal history and knowledge site with strong visual storytelling, content catalogs, and long-form reading.',
+  '企业官网': 'Company Website',
+  'AI数据智能': 'AI Data Intelligence',
+  '品牌首屏': 'Brand Hero',
+  'AI产品': 'AI Product',
+  '简历优化': 'Resume Optimization',
+  'Web3求职': 'Web3 Career',
+  '行业网站': 'Industry Website',
+  '司法鉴定': 'Forensic Appraisal',
+  '内容叙事': 'Content Storytelling',
   '电商主图 / 详情首屏 / 社媒种草图': 'E-commerce hero / detail page / social seeding',
   '服装上新 / 穿搭海报 / 模特氛围图': 'New arrivals / outfit posters / model atmosphere',
   '品牌发布 / 活动宣传 / B2B物料': 'Brand launch / campaign / B2B materials',
@@ -426,6 +472,7 @@ function header() {
       <nav aria-label="主导航">
         <a href="/#templates">${tr('模板')}</a>
         <a href="/#services">${tr('服务')}</a>
+        <a href="/#live-projects">${tr('作品')}</a>
         <a href="/#cases">${tr('案例')}</a>
         <a href="/#pricing">${tr('价格')}</a>
         <a href="/#contact">${tr('联系')}</a>
@@ -540,6 +587,29 @@ function renderHome() {
               <img src="/${image}" alt="${title}" loading="lazy" />
               <div><span>${label}</span><h3>${tr(title)}</h3><p>${tr(desc)}</p></div>
             </article>
+          `).join('')}
+        </div>
+      </section>
+
+      <section id="live-projects" class="section live-projects">
+        <div class="section-head">
+          <div><div class="section-kicker">Live Work</div><h2>${tr('真实上线项目')}</h2></div>
+          <p>${tr('这里放的是已经上线的真实站点截图，客户可以直接点击访问原项目，比单纯概念图更有信任感。')}</p>
+        </div>
+        <div class="real-project-grid">
+          ${realProjects.map((project, index) => `
+            <a class="real-project-card ${index === 0 ? 'wide' : ''}" href="${project.url}" target="_blank" rel="noreferrer">
+              <div class="real-project-shot">
+                <img src="/${project.image}" alt="${project.title}" loading="lazy" />
+              </div>
+              <div class="real-project-body">
+                <span>${project.label}</span>
+                <h3>${tr(project.title)}</h3>
+                <p>${tr(project.desc)}</p>
+                <div class="mini-tags">${project.tags.map(tag => `<em>${tr(tag)}</em>`).join('')}</div>
+                <strong>${tr('访问项目')} -></strong>
+              </div>
+            </a>
           `).join('')}
         </div>
       </section>
