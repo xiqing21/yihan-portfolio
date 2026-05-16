@@ -220,6 +220,16 @@ const translations = {
   '坐标': 'Location',
   '广东惠州华润小径湾，紧邻深圳': 'China Resources Xiaojing Bay, Huizhou, near Shenzhen',
   '可承接深惠两地线下面谈、上门对接项目。': 'Available for onsite meetings in Huizhou and Shenzhen.',
+  '交互肖像': 'Interactive Portrait',
+  '移动鼠标，像透过一束光查看另一层数据视觉。': 'Move the cursor to inspect another visual layer through a beam of light.',
+  '数据驱动 · 创意交付 · Web3 隐私应用': 'Data-driven · Creative delivery · Web3 privacy apps',
+  '3D智能体': '3D Agent',
+  '把复杂系统做成可感知、可交互、可上线的商业产品。': 'Turning complex systems into tangible, interactive, launch-ready products.',
+  'Spline 模型位': 'Spline-ready Slot',
+  '等待真实 scene 链接接入': 'Awaiting real scene link',
+  '数据核心': 'Data Core',
+  '视觉生成': 'Visual AI',
+  '链上交互': 'On-chain UX',
   '客户可以直接选择的项目类型': 'Project Types Clients Can Choose',
   '从低预算展示，到功能平台，再到 Web3 / APP 高端定制，先把范围讲清楚，报价和交付就不会扯皮。': 'From low-budget showcases to platforms and premium Web3/App builds, scope comes first so pricing and delivery stay clear.',
   '服务列表': 'Services',
@@ -526,6 +536,57 @@ function renderHome() {
 
       <section class="marquee-wrap" aria-label="技能标签">
         <div class="marquee">${[...skills, ...skills].map(skill => `<span>${tr(skill)}</span>`).join('')}</div>
+      </section>
+
+      <section id="portrait" class="portrait-lab" aria-label="${tr('交互肖像')}">
+        <div class="portrait-frame" data-portrait-reveal>
+          <div class="portrait-grid" aria-hidden="true"></div>
+          <img class="portrait-base" src="/yihan-portrait-base.webp" alt="郑逸晗肖像" />
+          <div class="portrait-layer" aria-hidden="true">
+            <img src="/yihan-portrait-layer.webp" alt="" />
+          </div>
+          <div class="portrait-cursor" aria-hidden="true"></div>
+          <div class="portrait-copy portrait-copy-base">
+            <span>郑</span>
+            <span>逸晗</span>
+          </div>
+          <div class="portrait-copy portrait-copy-invert" aria-hidden="true">
+            <span>郑</span>
+            <span>逸晗</span>
+          </div>
+          <a class="x-link x-link-base" href="https://x.com/love2580x" target="_blank" rel="noreferrer" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2.25h3.28l-7.16 8.19 8.42 11.31h-6.6l-5.17-6.87-5.92 6.87H2.47l7.66-8.9L2.06 2.25h6.76l4.67 6.26 5.41-6.26Zm-1.15 17.5h1.82L7.82 4.15H5.87l11.88 15.6Z"/></svg>
+          </a>
+          <a class="x-link x-link-invert" href="https://x.com/love2580x" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2.25h3.28l-7.16 8.19 8.42 11.31h-6.6l-5.17-6.87-5.92 6.87H2.47l7.66-8.9L2.06 2.25h6.76l4.67 6.26 5.41-6.26Zm-1.15 17.5h1.82L7.82 4.15H5.87l11.88 15.6Z"/></svg>
+          </a>
+          <div class="portrait-caption">
+            <span>${tr('交互肖像')}</span>
+            <p>${tr('移动鼠标，像透过一束光查看另一层数据视觉。')}</p>
+          </div>
+        </div>
+        <aside class="robot-stage" aria-label="${tr('3D智能体')}">
+          <div class="robot-orbit" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="robot-model" aria-hidden="true">
+            <div class="robot-head"><i></i><b></b><b></b></div>
+            <div class="robot-body"><span></span><span></span><span></span></div>
+            <div class="robot-arm left"></div>
+            <div class="robot-arm right"></div>
+          </div>
+          <div class="robot-copy">
+            <span>${tr('3D智能体')}</span>
+            <h2>${tr('把复杂系统做成可感知、可交互、可上线的商业产品。')}</h2>
+            <p>${tr('数据驱动 · 创意交付 · Web3 隐私应用')}</p>
+          </div>
+          <div class="robot-tags">
+            <span>${tr('Spline 模型位')}</span>
+            <span>${tr('数据核心')}</span>
+            <span>${tr('视觉生成')}</span>
+            <span>${tr('链上交互')}</span>
+          </div>
+        </aside>
       </section>
 
       <section id="about" class="section about">
@@ -887,6 +948,8 @@ function bindCommonInteractions() {
     }
   });
 
+  initPortraitReveal();
+
   document.addEventListener('click', event => {
     const target = event.target.closest('button');
     if (!target) return;
@@ -926,6 +989,92 @@ function bindCommonInteractions() {
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.section, .reveal').forEach(el => observer.observe(el));
+}
+
+function initPortraitReveal() {
+  const frame = document.querySelector('[data-portrait-reveal]');
+  if (!frame) return;
+
+  const hotIcon = frame.querySelector('.x-link-base');
+  const state = {
+    x: 0,
+    y: 0,
+    targetX: 0,
+    targetY: 0,
+    lastX: 0,
+    lastY: 0,
+    lastEcho: 0,
+    active: false
+  };
+
+  const setFromRect = (clientX, clientY) => {
+    const rect = frame.getBoundingClientRect();
+    state.targetX = Math.max(0, Math.min(rect.width, clientX - rect.left));
+    state.targetY = Math.max(0, Math.min(rect.height, clientY - rect.top));
+    state.active = true;
+  };
+
+  const seed = () => {
+    const rect = frame.getBoundingClientRect();
+    state.x = state.targetX = rect.width * 0.58;
+    state.y = state.targetY = rect.height * 0.48;
+    frame.style.setProperty('--mx', `${state.x}px`);
+    frame.style.setProperty('--my', `${state.y}px`);
+  };
+
+  const addEcho = (speed) => {
+    const echo = document.createElement('span');
+    echo.className = 'cursor-echo';
+    const size = Math.min(300, 190 + speed * 0.28);
+    echo.style.width = `${size}px`;
+    echo.style.height = `${size}px`;
+    echo.style.left = `${state.x}px`;
+    echo.style.top = `${state.y}px`;
+    frame.appendChild(echo);
+    window.setTimeout(() => echo.remove(), 520);
+  };
+
+  const tick = (time = 0) => {
+    state.x += (state.targetX - state.x) * 0.18;
+    state.y += (state.targetY - state.y) * 0.18;
+    const rect = frame.getBoundingClientRect();
+    const px = state.x - rect.width / 2;
+    const py = state.y - rect.height / 2;
+    const speed = Math.hypot(state.x - state.lastX, state.y - state.lastY);
+
+    frame.style.setProperty('--mx', `${state.x}px`);
+    frame.style.setProperty('--my', `${state.y}px`);
+    frame.style.setProperty('--px', `${px}px`);
+    frame.style.setProperty('--py', `${py}px`);
+
+    if (speed > 20 && time - state.lastEcho > 70) {
+      addEcho(speed);
+      state.lastEcho = time;
+    }
+
+    if (hotIcon) {
+      const iconRect = hotIcon.getBoundingClientRect();
+      const frameRect = frame.getBoundingClientRect();
+      const iconX = iconRect.left - frameRect.left + iconRect.width / 2;
+      const iconY = iconRect.top - frameRect.top + iconRect.height / 2;
+      hotIcon.classList.toggle('is-inverted', Math.hypot(state.x - iconX, state.y - iconY) < 128);
+    }
+
+    state.lastX = state.x;
+    state.lastY = state.y;
+    window.requestAnimationFrame(tick);
+  };
+
+  seed();
+  frame.addEventListener('pointermove', event => setFromRect(event.clientX, event.clientY), { passive: true });
+  frame.addEventListener('pointerenter', event => setFromRect(event.clientX, event.clientY), { passive: true });
+  frame.addEventListener('pointerleave', () => {
+    const rect = frame.getBoundingClientRect();
+    state.targetX = rect.width * 0.58;
+    state.targetY = rect.height * 0.48;
+  });
+  window.addEventListener('resize', seed);
+  window.requestAnimationFrame(tick);
 }
 
 function rerenderCurrentPage() {
