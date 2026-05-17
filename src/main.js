@@ -222,6 +222,7 @@ const translations = {
   '可承接深惠两地线下面谈、上门对接项目。': 'Available for onsite meetings in Huizhou and Shenzhen.',
   '交互肖像': 'Interactive Portrait',
   '移动鼠标，像透过一束光查看另一层数据视觉。': 'Move the cursor to inspect another visual layer through a beam of light.',
+  '只让头部进入另一层数据视觉，背景保持原图稳定。': 'Only the head enters the alternate data layer while the background stays stable.',
   '数据驱动 · 创意交付 · Web3 隐私应用': 'Data-driven · Creative delivery · Web3 privacy apps',
   '3D智能体': '3D Agent',
   '把复杂系统做成可感知、可交互、可上线的商业产品。': 'Turning complex systems into tangible, interactive, launch-ready products.',
@@ -527,19 +528,7 @@ function renderHome() {
             <a class="secondary" href="#cases">${tr('看完整案例')}</a>
           </div>
         </div>
-        <aside class="hero-card reveal delay-1" aria-label="核心能力">
-          <strong>${tr('擅长')}</strong>
-          <p>${tr('APP / 小程序 / 官网定制开发、完整账号体系、图文视频存储交互、支付功能对接、AI商业视觉设计、区块链DApp开发。')}</p>
-          <div class="signal-row"><span>Design</span><span>Code</span><span>Deploy</span><span>Maintain</span></div>
-        </aside>
-      </section>
-
-      <section class="marquee-wrap" aria-label="技能标签">
-        <div class="marquee">${[...skills, ...skills].map(skill => `<span>${tr(skill)}</span>`).join('')}</div>
-      </section>
-
-      <section id="portrait" class="portrait-lab" aria-label="${tr('交互肖像')}">
-        <div class="portrait-frame" data-portrait-reveal>
+        <div class="portrait-frame hero-portrait reveal delay-1" data-portrait-reveal>
           <div class="portrait-grid" aria-hidden="true"></div>
           <img class="portrait-base" src="/yihan-portrait-base.webp" alt="郑逸晗肖像" />
           <div class="portrait-layer" aria-hidden="true">
@@ -562,31 +551,37 @@ function renderHome() {
           </a>
           <div class="portrait-caption">
             <span>${tr('交互肖像')}</span>
-            <p>${tr('移动鼠标，像透过一束光查看另一层数据视觉。')}</p>
+            <p>${tr('只让头部进入另一层数据视觉，背景保持原图稳定。')}</p>
           </div>
         </div>
-        <aside class="robot-stage" aria-label="${tr('3D智能体')}">
-          <div class="robot-orbit" aria-hidden="true">
-            <span></span><span></span><span></span>
+      </section>
+
+      <section class="marquee-wrap" aria-label="技能标签">
+        <div class="marquee">${[...skills, ...skills].map(skill => `<span>${tr(skill)}</span>`).join('')}</div>
+      </section>
+
+      <section class="spline-stage-wide" aria-label="${tr('3D智能体')}">
+        <div class="spline-copy">
+          <span>${tr('3D智能体')}</span>
+          <h2>${tr('把复杂系统做成可感知、可交互、可上线的商业产品。')}</h2>
+          <p>${tr('数据驱动 · 创意交付 · Web3 隐私应用')}</p>
+        </div>
+        <div class="spline-canvas">
+          <div class="spline-fallback" aria-hidden="true">
+            <div class="fallback-orbit"><span></span><span></span><span></span></div>
+            <div class="fallback-bot">
+              <div class="fallback-head"><i></i><b></b><b></b></div>
+              <div class="fallback-body"><span></span><span></span><span></span></div>
+            </div>
           </div>
-          <div class="robot-model" aria-hidden="true">
-            <div class="robot-head"><i></i><b></b><b></b></div>
-            <div class="robot-body"><span></span><span></span><span></span></div>
-            <div class="robot-arm left"></div>
-            <div class="robot-arm right"></div>
-          </div>
-          <div class="robot-copy">
-            <span>${tr('3D智能体')}</span>
-            <h2>${tr('把复杂系统做成可感知、可交互、可上线的商业产品。')}</h2>
-            <p>${tr('数据驱动 · 创意交付 · Web3 隐私应用')}</p>
-          </div>
-          <div class="robot-tags">
-            <span>${tr('Spline 模型位')}</span>
-            <span>${tr('数据核心')}</span>
-            <span>${tr('视觉生成')}</span>
-            <span>${tr('链上交互')}</span>
-          </div>
-        </aside>
+          <spline-viewer url="https://prod.spline.design/D36xBgWByY-hIdIP/scene.splinecode"></spline-viewer>
+        </div>
+        <div class="robot-tags spline-tags">
+          <span>Spline 3D</span>
+          <span>${tr('数据核心')}</span>
+          <span>${tr('视觉生成')}</span>
+          <span>${tr('链上交互')}</span>
+        </div>
       </section>
 
       <section id="about" class="section about">
@@ -949,6 +944,7 @@ function bindCommonInteractions() {
   });
 
   initPortraitReveal();
+  initSplineViewerSizing();
 
   document.addEventListener('click', event => {
     const target = event.target.closest('button');
@@ -996,6 +992,7 @@ function initPortraitReveal() {
   if (!frame) return;
 
   const hotIcon = frame.querySelector('.x-link-base');
+  const layer = frame.querySelector('.portrait-layer');
   const state = {
     x: 0,
     y: 0,
@@ -1016,8 +1013,8 @@ function initPortraitReveal() {
 
   const seed = () => {
     const rect = frame.getBoundingClientRect();
-    state.x = state.targetX = rect.width * 0.58;
-    state.y = state.targetY = rect.height * 0.48;
+    state.x = state.targetX = rect.width * 0.52;
+    state.y = state.targetY = rect.height * 0.34;
     frame.style.setProperty('--mx', `${state.x}px`);
     frame.style.setProperty('--my', `${state.y}px`);
   };
@@ -1035,19 +1032,31 @@ function initPortraitReveal() {
   };
 
   const tick = (time = 0) => {
-    state.x += (state.targetX - state.x) * 0.18;
-    state.y += (state.targetY - state.y) * 0.18;
+    state.x += (state.targetX - state.x) * 0.105;
+    state.y += (state.targetY - state.y) * 0.105;
     const rect = frame.getBoundingClientRect();
     const px = state.x - rect.width / 2;
     const py = state.y - rect.height / 2;
     const speed = Math.hypot(state.x - state.lastX, state.y - state.lastY);
+    const stretch = Math.min(0.28, speed / 240);
+    const angle = Math.atan2(state.y - state.lastY, state.x - state.lastX) * 180 / Math.PI;
 
     frame.style.setProperty('--mx', `${state.x}px`);
     frame.style.setProperty('--my', `${state.y}px`);
     frame.style.setProperty('--px', `${px}px`);
     frame.style.setProperty('--py', `${py}px`);
+    frame.style.setProperty('--sx', `${1 + stretch}`);
+    frame.style.setProperty('--sy', `${1 - stretch * 0.55}`);
+    frame.style.setProperty('--rot', `${Number.isFinite(angle) ? angle : 0}deg`);
+    frame.style.setProperty('--mask-r', `${Math.min(124, Math.max(86, rect.width * 0.19))}px`);
 
-    if (speed > 20 && time - state.lastEcho > 70) {
+    if (layer) {
+      const layerRect = layer.getBoundingClientRect();
+      frame.style.setProperty('--lx', `${state.x - (layerRect.left - rect.left)}px`);
+      frame.style.setProperty('--ly', `${state.y - (layerRect.top - rect.top)}px`);
+    }
+
+    if (speed > 13 && time - state.lastEcho > 54) {
       addEcho(speed);
       state.lastEcho = time;
     }
@@ -1070,11 +1079,38 @@ function initPortraitReveal() {
   frame.addEventListener('pointerenter', event => setFromRect(event.clientX, event.clientY), { passive: true });
   frame.addEventListener('pointerleave', () => {
     const rect = frame.getBoundingClientRect();
-    state.targetX = rect.width * 0.58;
-    state.targetY = rect.height * 0.48;
+    state.targetX = rect.width * 0.52;
+    state.targetY = rect.height * 0.34;
   });
   window.addEventListener('resize', seed);
   window.requestAnimationFrame(tick);
+}
+
+function initSplineViewerSizing() {
+  const viewer = document.querySelector('spline-viewer');
+  if (!viewer) return;
+
+  const sync = () => {
+    const rect = viewer.getBoundingClientRect();
+    const canvas = viewer.shadowRoot?.querySelector('canvas');
+    const container = viewer.shadowRoot?.querySelector('#container');
+    if (container) {
+      container.style.width = '100%';
+      container.style.height = '100%';
+    }
+    if (canvas && rect.width > 0 && rect.height > 0) {
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.width = Math.round(rect.width * window.devicePixelRatio);
+      canvas.height = Math.round(rect.height * window.devicePixelRatio);
+    }
+  };
+
+  sync();
+  window.setTimeout(sync, 500);
+  window.setTimeout(sync, 1800);
+  window.setTimeout(sync, 4200);
+  new ResizeObserver(sync).observe(viewer);
 }
 
 function rerenderCurrentPage() {
