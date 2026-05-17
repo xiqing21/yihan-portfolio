@@ -1022,9 +1022,9 @@ function initPortraitReveal() {
   const addEcho = (speed) => {
     const echo = document.createElement('span');
     echo.className = 'cursor-echo';
-    const size = Math.min(300, 190 + speed * 0.28);
+    const size = Math.min(238, 178 + speed * 0.16);
     echo.style.width = `${size}px`;
-    echo.style.height = `${size}px`;
+    echo.style.height = `${Math.max(82, size * 0.52)}px`;
     echo.style.left = `${state.x}px`;
     echo.style.top = `${state.y}px`;
     frame.appendChild(echo);
@@ -1032,13 +1032,13 @@ function initPortraitReveal() {
   };
 
   const tick = (time = 0) => {
-    state.x += (state.targetX - state.x) * 0.105;
-    state.y += (state.targetY - state.y) * 0.105;
+    state.x += (state.targetX - state.x) * 0.34;
+    state.y += (state.targetY - state.y) * 0.34;
     const rect = frame.getBoundingClientRect();
     const px = state.x - rect.width / 2;
     const py = state.y - rect.height / 2;
     const speed = Math.hypot(state.x - state.lastX, state.y - state.lastY);
-    const stretch = Math.min(0.28, speed / 240);
+    const stretch = Math.min(0.16, speed / 360);
     const angle = Math.atan2(state.y - state.lastY, state.x - state.lastX) * 180 / Math.PI;
 
     frame.style.setProperty('--mx', `${state.x}px`);
@@ -1048,7 +1048,7 @@ function initPortraitReveal() {
     frame.style.setProperty('--sx', `${1 + stretch}`);
     frame.style.setProperty('--sy', `${1 - stretch * 0.55}`);
     frame.style.setProperty('--rot', `${Number.isFinite(angle) ? angle : 0}deg`);
-    frame.style.setProperty('--mask-r', `${Math.min(124, Math.max(86, rect.width * 0.19))}px`);
+    frame.style.setProperty('--mask-r', `${Math.min(94, Math.max(62, rect.width * 0.145))}px`);
 
     if (layer) {
       const layerRect = layer.getBoundingClientRect();
@@ -1056,7 +1056,7 @@ function initPortraitReveal() {
       frame.style.setProperty('--ly', `${state.y - (layerRect.top - rect.top)}px`);
     }
 
-    if (speed > 13 && time - state.lastEcho > 54) {
+    if (speed > 18 && time - state.lastEcho > 74) {
       addEcho(speed);
       state.lastEcho = time;
     }

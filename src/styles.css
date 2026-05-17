@@ -526,9 +526,9 @@ h3 {
   width: 76%;
   height: 46%;
   z-index: 2;
-  clip-path: ellipse(calc(var(--mask-r) * var(--sx)) calc(var(--mask-r) * var(--sy)) at var(--lx) var(--ly));
-  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.2));
-  transition: clip-path 0.18s ease-out;
+  clip-path: ellipse(calc(var(--mask-r) * 1.58 * var(--sx)) calc(var(--mask-r) * 0.64 * var(--sy)) at var(--lx) var(--ly));
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.18));
+  transition: clip-path 0.08s linear;
 }
 
 .portrait-layer img {
@@ -547,29 +547,34 @@ h3 {
   z-index: 8;
   left: var(--mx);
   top: var(--my);
-  width: 232px;
-  height: 232px;
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  border-radius: 50%;
+  width: 188px;
+  height: 108px;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 52% 48% 48% 52% / 42% 58% 42% 58%;
+  background:
+    radial-gradient(circle at 38% 30%, rgba(255, 255, 255, 0.22), transparent 34%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08), transparent 62%);
   box-shadow:
-    0 0 0 1px rgba(16, 32, 29, 0.14),
-    0 18px 50px rgba(8, 20, 18, 0.28),
-    inset 0 0 36px rgba(255, 255, 255, 0.22);
+    0 0 0 1px rgba(16, 32, 29, 0.08),
+    0 12px 34px rgba(8, 20, 18, 0.18),
+    inset 0 0 34px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(1.5px);
   pointer-events: none;
-  transform: translate(-50%, -50%) rotate(var(--rot)) scale(var(--sx), var(--sy));
-  transition: transform 0.08s linear, border-radius 0.22s ease;
+  transform: translate(-50%, -50%) scale(var(--sx), var(--sy));
+  transition: transform 0.04s linear, border-radius 0.16s ease;
 }
 
 .cursor-echo {
   z-index: 7;
-  opacity: 0.38;
-  animation: echoFade 0.48s ease-out forwards;
+  opacity: 0.2;
+  background: transparent;
+  animation: echoFade 0.34s ease-out forwards;
 }
 
 @keyframes echoFade {
   to {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1.28);
+    transform: translate(-50%, -50%) scale(1.16);
   }
 }
 
@@ -853,15 +858,16 @@ h3 {
 
 .spline-stage-wide {
   position: relative;
-  width: min(1420px, calc(100% - 36px));
-  min-height: 640px;
+  width: min(1460px, calc(100% - 36px));
+  min-height: 700px;
   margin: clamp(36px, 6vw, 72px) auto;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
   background:
-    radial-gradient(circle at 78% 18%, rgba(95, 208, 178, 0.34), transparent 36%),
-    linear-gradient(135deg, rgba(8, 20, 18, 0.98), rgba(15, 107, 88, 0.78));
+    radial-gradient(circle at 72% 20%, rgba(255, 255, 255, 0.86), transparent 36%),
+    radial-gradient(circle at 58% 66%, rgba(178, 202, 196, 0.38), transparent 42%),
+    linear-gradient(135deg, #d9ddd9, #f1f1ef 52%, #d8ddda);
   box-shadow: var(--shadow);
 }
 
@@ -869,44 +875,72 @@ h3 {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.16;
+  z-index: 1;
+  opacity: 0.28;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(16, 32, 29, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(16, 32, 29, 0.06) 1px, transparent 1px);
   background-size: 46px 46px;
+  pointer-events: none;
+}
+
+.spline-stage-wide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(248, 243, 234, 0.34), transparent 28%, transparent 72%, rgba(248, 243, 234, 0.18)),
+    linear-gradient(180deg, rgba(248, 243, 234, 0.4), transparent 20%, transparent 82%, rgba(8, 20, 18, 0.08));
   pointer-events: none;
 }
 
 .spline-copy {
   position: absolute;
-  left: clamp(24px, 5vw, 68px);
-  bottom: clamp(92px, 12vw, 142px);
-  z-index: 3;
-  max-width: min(350px, 28%);
-  color: #eafaf5;
+  left: clamp(22px, 4vw, 48px);
+  top: clamp(22px, 4vw, 48px);
+  bottom: auto;
+  z-index: 5;
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+  row-gap: 2px;
+  align-items: center;
+  max-width: min(520px, calc(100% - 44px));
+  border: 1px solid rgba(16, 32, 29, 0.12);
+  border-radius: 999px;
+  padding: 11px 16px;
+  color: #10201d;
+  background: rgba(248, 243, 234, 0.54);
+  box-shadow: 0 18px 44px rgba(16, 32, 29, 0.1);
+  backdrop-filter: blur(14px);
   pointer-events: none;
 }
 
 .spline-copy span {
-  color: var(--sea);
+  color: var(--jade);
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
 }
 
 .spline-copy h2 {
-  margin: 12px 0;
-  font-size: clamp(30px, 3.45vw, 52px);
-  line-height: 1.02;
+  grid-column: 2;
+  margin: 0;
+  font-family: "Avenir Next", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: clamp(15px, 1.35vw, 20px);
+  line-height: 1.2;
 }
 
 .spline-copy p {
-  color: rgba(234, 250, 245, 0.72);
+  display: none;
+  margin-bottom: 0;
+  color: rgba(16, 32, 29, 0.64);
 }
 
 .spline-canvas {
   position: absolute;
-  inset: -9% -4% -12% 30%;
+  inset: -13% -10% -16% -8%;
   z-index: 1;
 }
 
@@ -916,8 +950,8 @@ h3 {
   z-index: 0;
   display: grid;
   place-items: center;
-  opacity: 0.76;
-  transform: translateX(9%);
+  opacity: 0.56;
+  transform: translateX(14%) scale(1.12);
   pointer-events: none;
 }
 
@@ -1040,7 +1074,16 @@ h3 {
 }
 
 .spline-tags {
-  z-index: 4;
+  z-index: 5;
+  left: clamp(22px, 4vw, 48px);
+  right: clamp(22px, 4vw, 48px);
+}
+
+.spline-tags span {
+  color: #10201d;
+  border-color: rgba(16, 32, 29, 0.12);
+  background: rgba(248, 243, 234, 0.52);
+  backdrop-filter: blur(12px);
 }
 
 .section {
