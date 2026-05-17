@@ -528,30 +528,19 @@ function renderHome() {
             <a class="secondary" href="#cases">${tr('看完整案例')}</a>
           </div>
         </div>
-        <div class="portrait-frame hero-portrait reveal delay-1" data-portrait-reveal>
+        <div class="portrait-frame hero-portrait reveal delay-1">
           <div class="portrait-grid" aria-hidden="true"></div>
           <img class="portrait-base" src="/yihan-portrait-base.webp" alt="郑逸晗肖像" />
-          <div class="portrait-layer" aria-hidden="true">
-            <img src="/yihan-portrait-layer.webp" alt="" />
-          </div>
-          <div class="portrait-cursor" aria-hidden="true"></div>
           <div class="portrait-copy portrait-copy-base">
-            <span>郑</span>
-            <span>逸晗</span>
-          </div>
-          <div class="portrait-copy portrait-copy-invert" aria-hidden="true">
             <span>郑</span>
             <span>逸晗</span>
           </div>
           <a class="x-link x-link-base" href="https://x.com/love2580x" target="_blank" rel="noreferrer" aria-label="Twitter / X">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2.25h3.28l-7.16 8.19 8.42 11.31h-6.6l-5.17-6.87-5.92 6.87H2.47l7.66-8.9L2.06 2.25h6.76l4.67 6.26 5.41-6.26Zm-1.15 17.5h1.82L7.82 4.15H5.87l11.88 15.6Z"/></svg>
           </a>
-          <a class="x-link x-link-invert" href="https://x.com/love2580x" target="_blank" rel="noreferrer" aria-hidden="true" tabindex="-1">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2.25h3.28l-7.16 8.19 8.42 11.31h-6.6l-5.17-6.87-5.92 6.87H2.47l7.66-8.9L2.06 2.25h6.76l4.67 6.26 5.41-6.26Zm-1.15 17.5h1.82L7.82 4.15H5.87l11.88 15.6Z"/></svg>
-          </a>
           <div class="portrait-caption">
             <span>${tr('交互肖像')}</span>
-            <p>${tr('只让头部进入另一层数据视觉，背景保持原图稳定。')}</p>
+            <p>${tr('数据驱动 · 创意交付 · Web3 隐私应用')}</p>
           </div>
         </div>
       </section>
@@ -943,7 +932,6 @@ function bindCommonInteractions() {
     }
   });
 
-  initPortraitReveal();
   initSplineViewerSizing();
 
   document.addEventListener('click', event => {
@@ -985,105 +973,6 @@ function bindCommonInteractions() {
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.section, .reveal').forEach(el => observer.observe(el));
-}
-
-function initPortraitReveal() {
-  const frame = document.querySelector('[data-portrait-reveal]');
-  if (!frame) return;
-
-  const hotIcon = frame.querySelector('.x-link-base');
-  const layer = frame.querySelector('.portrait-layer');
-  const state = {
-    x: 0,
-    y: 0,
-    targetX: 0,
-    targetY: 0,
-    lastX: 0,
-    lastY: 0,
-    lastEcho: 0,
-    active: false
-  };
-
-  const setFromRect = (clientX, clientY) => {
-    const rect = frame.getBoundingClientRect();
-    state.targetX = Math.max(0, Math.min(rect.width, clientX - rect.left));
-    state.targetY = Math.max(0, Math.min(rect.height, clientY - rect.top));
-    state.active = true;
-  };
-
-  const seed = () => {
-    const rect = frame.getBoundingClientRect();
-    state.x = state.targetX = rect.width * 0.52;
-    state.y = state.targetY = rect.height * 0.34;
-    frame.style.setProperty('--mx', `${state.x}px`);
-    frame.style.setProperty('--my', `${state.y}px`);
-  };
-
-  const addEcho = (speed) => {
-    const echo = document.createElement('span');
-    echo.className = 'cursor-echo';
-    const size = Math.min(238, 178 + speed * 0.16);
-    echo.style.width = `${size}px`;
-    echo.style.height = `${Math.max(82, size * 0.52)}px`;
-    echo.style.left = `${state.x}px`;
-    echo.style.top = `${state.y}px`;
-    frame.appendChild(echo);
-    window.setTimeout(() => echo.remove(), 520);
-  };
-
-  const tick = (time = 0) => {
-    state.x += (state.targetX - state.x) * 0.34;
-    state.y += (state.targetY - state.y) * 0.34;
-    const rect = frame.getBoundingClientRect();
-    const px = state.x - rect.width / 2;
-    const py = state.y - rect.height / 2;
-    const speed = Math.hypot(state.x - state.lastX, state.y - state.lastY);
-    const stretch = Math.min(0.16, speed / 360);
-    const angle = Math.atan2(state.y - state.lastY, state.x - state.lastX) * 180 / Math.PI;
-
-    frame.style.setProperty('--mx', `${state.x}px`);
-    frame.style.setProperty('--my', `${state.y}px`);
-    frame.style.setProperty('--px', `${px}px`);
-    frame.style.setProperty('--py', `${py}px`);
-    frame.style.setProperty('--sx', `${1 + stretch}`);
-    frame.style.setProperty('--sy', `${1 - stretch * 0.55}`);
-    frame.style.setProperty('--rot', `${Number.isFinite(angle) ? angle : 0}deg`);
-    frame.style.setProperty('--mask-r', `${Math.min(94, Math.max(62, rect.width * 0.145))}px`);
-
-    if (layer) {
-      const layerRect = layer.getBoundingClientRect();
-      frame.style.setProperty('--lx', `${state.x - (layerRect.left - rect.left)}px`);
-      frame.style.setProperty('--ly', `${state.y - (layerRect.top - rect.top)}px`);
-    }
-
-    if (speed > 18 && time - state.lastEcho > 74) {
-      addEcho(speed);
-      state.lastEcho = time;
-    }
-
-    if (hotIcon) {
-      const iconRect = hotIcon.getBoundingClientRect();
-      const frameRect = frame.getBoundingClientRect();
-      const iconX = iconRect.left - frameRect.left + iconRect.width / 2;
-      const iconY = iconRect.top - frameRect.top + iconRect.height / 2;
-      hotIcon.classList.toggle('is-inverted', Math.hypot(state.x - iconX, state.y - iconY) < 128);
-    }
-
-    state.lastX = state.x;
-    state.lastY = state.y;
-    window.requestAnimationFrame(tick);
-  };
-
-  seed();
-  frame.addEventListener('pointermove', event => setFromRect(event.clientX, event.clientY), { passive: true });
-  frame.addEventListener('pointerenter', event => setFromRect(event.clientX, event.clientY), { passive: true });
-  frame.addEventListener('pointerleave', () => {
-    const rect = frame.getBoundingClientRect();
-    state.targetX = rect.width * 0.52;
-    state.targetY = rect.height * 0.34;
-  });
-  window.addEventListener('resize', seed);
-  window.requestAnimationFrame(tick);
 }
 
 function initSplineViewerSizing() {

@@ -446,16 +446,6 @@ h3 {
 }
 
 .portrait-lab {
-  --mx: 50%;
-  --my: 50%;
-  --lx: 50%;
-  --ly: 50%;
-  --mask-r: 104px;
-  --sx: 1;
-  --sy: 1;
-  --rot: 0deg;
-  --px: 0px;
-  --py: 0px;
   display: grid;
   grid-template-columns: minmax(320px, 0.72fr) minmax(320px, 0.5fr);
   gap: clamp(18px, 4vw, 42px);
@@ -465,16 +455,6 @@ h3 {
 }
 
 .portrait-frame {
-  --mx: 50%;
-  --my: 50%;
-  --lx: 50%;
-  --ly: 50%;
-  --mask-r: 104px;
-  --sx: 1;
-  --sy: 1;
-  --rot: 0deg;
-  --px: 0px;
-  --py: 0px;
   position: relative;
   min-height: min(86vh, 860px);
   overflow: hidden;
@@ -482,7 +462,6 @@ h3 {
   border-radius: 8px;
   background: #fff;
   box-shadow: var(--shadow);
-  cursor: none;
   isolation: isolate;
 }
 
@@ -490,7 +469,7 @@ h3 {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--mx) var(--my), rgba(255, 255, 255, 0.08), transparent 22%);
+  background: linear-gradient(180deg, transparent 58%, rgba(8, 20, 18, 0.54));
   pointer-events: none;
 }
 
@@ -502,80 +481,18 @@ h3 {
   background:
     linear-gradient(90deg, rgba(16, 32, 29, 0.1) 1px, transparent 1px),
     linear-gradient(0deg, rgba(16, 32, 29, 0.1) 1px, transparent 1px);
-  background-position: calc(var(--px) * -0.18) calc(var(--py) * -0.18);
   background-size: 34px 34px;
-  transition: background-position 0.3s ease, opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
-.portrait-base,
-.portrait-layer img {
+.portrait-base {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transform: translate(calc(var(--px) * -0.025), calc(var(--py) * -0.025)) scale(1.006);
-  transition: transform 0.3s ease;
-}
-
-.portrait-layer {
-  position: absolute;
-  left: 12%;
-  top: 12%;
-  width: 76%;
-  height: 46%;
-  z-index: 2;
-  clip-path: ellipse(calc(var(--mask-r) * 1.58 * var(--sx)) calc(var(--mask-r) * 0.64 * var(--sy)) at var(--lx) var(--ly));
-  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.18));
-  transition: clip-path 0.08s linear;
-}
-
-.portrait-layer img {
-  left: -38%;
-  top: -54%;
-  width: 176%;
-  height: 206%;
-  object-position: center 22%;
-  filter: saturate(1.08) contrast(1.08);
-  transform: translate(calc(var(--px) * -0.018), calc(var(--py) * -0.018)) scale(1.01);
-}
-
-.portrait-cursor,
-.cursor-echo {
-  position: absolute;
-  z-index: 8;
-  left: var(--mx);
-  top: var(--my);
-  width: 188px;
-  height: 108px;
-  border: 1px solid rgba(255, 255, 255, 0.62);
-  border-radius: 52% 48% 48% 52% / 42% 58% 42% 58%;
-  background:
-    radial-gradient(circle at 38% 30%, rgba(255, 255, 255, 0.22), transparent 34%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08), transparent 62%);
-  box-shadow:
-    0 0 0 1px rgba(16, 32, 29, 0.08),
-    0 12px 34px rgba(8, 20, 18, 0.18),
-    inset 0 0 34px rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(1.5px);
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(var(--sx), var(--sy));
-  transition: transform 0.04s linear, border-radius 0.16s ease;
-}
-
-.cursor-echo {
-  z-index: 7;
-  opacity: 0.2;
-  background: transparent;
-  animation: echoFade 0.34s ease-out forwards;
-}
-
-@keyframes echoFade {
-  to {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.16);
-  }
+  transform: scale(1.002);
 }
 
 .portrait-copy {
@@ -591,19 +508,12 @@ h3 {
   line-height: 0.88;
   letter-spacing: 0;
   pointer-events: none;
-  transform: translate(calc(var(--px) * -0.045), calc(var(--py) * -0.045));
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .portrait-copy-base {
   color: #f8f3ea;
   text-shadow: 0 12px 26px rgba(0, 0, 0, 0.34);
-}
-
-.portrait-copy-invert {
-  z-index: 5;
-  color: #fff;
-  clip-path: circle(116px at calc(var(--mx) - clamp(24px, 4vw, 52px)) calc(var(--my) - clamp(24px, 4vw, 52px)));
 }
 
 .x-link {
@@ -619,7 +529,6 @@ h3 {
   background: rgba(255, 255, 255, 0.9);
   color: #101010;
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
-  transform: translate(calc(var(--px) * -0.035), calc(var(--py) * -0.035));
   transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease;
 }
 
@@ -629,16 +538,10 @@ h3 {
   fill: currentColor;
 }
 
-.x-link-invert {
-  z-index: 5;
+.x-link:hover {
   color: #fff;
-  background: rgba(16, 32, 29, 0.54);
-  clip-path: circle(116px at calc(var(--mx) - (100% - clamp(22px, 4vw, 48px) - 27px)) calc(var(--my) - (100% - clamp(22px, 4vw, 48px) - 27px)));
-}
-
-.x-link-base.is-inverted {
-  color: #fff;
-  background: rgba(16, 32, 29, 0.72);
+  background: rgba(16, 32, 29, 0.82);
+  transform: translateY(-2px);
 }
 
 .portrait-caption {
@@ -649,7 +552,6 @@ h3 {
   z-index: 4;
   max-width: 430px;
   color: rgba(255, 250, 242, 0.84);
-  transform: translate(calc(var(--px) * -0.03), calc(var(--py) * -0.03));
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
@@ -2782,16 +2684,6 @@ footer {
 
   .portrait-copy {
     font-size: clamp(48px, 18vw, 82px);
-  }
-
-  .portrait-layer {
-    clip-path: ellipse(calc(var(--mask-r) * var(--sx)) calc(var(--mask-r) * var(--sy)) at var(--lx) var(--ly));
-  }
-
-  .portrait-cursor,
-  .cursor-echo {
-    width: 184px;
-    height: 184px;
   }
 
   .real-project-card.wide .real-project-shot,
